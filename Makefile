@@ -6,7 +6,7 @@
 #    By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 22:03:15 by anrodri2          #+#    #+#              #
-#    Updated: 2023/09/27 18:55:04 by anrodri2         ###   ########.fr        #
+#    Updated: 2023/09/28 16:31:51 by anrodri2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,12 +23,13 @@ INC_DIR = inc/
 LIB_DIR = libs/libft
 
 #### SOURCE FILES ####
-LIBFT = $(LIB_DIR)/libft/libft.a
+LIBFT = $(LIB_DIR)/libft.a
 
 
 MLX = mlx_linux/libmlx.a
 
-SRCS =	main.c
+SRCS =	main.c \
+		parsing/parsing_main.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
@@ -53,7 +54,7 @@ all:		$(NAME)
 -include	$(DEPS)
 
 $(NAME):	$(LIBFT) $(MLX) $(OBJS)
-			$(CC) $(OBJS) $(CFLAGS) $(LFLAGS) $(MLX) -o $@
+			$(CC) $(OBJS) $(CFLAGS) $(LFLAGS) $(MLX) $(LIBFT) -o $@
 
 $(LIBFT):	FORCE
 			$(MAKE) all -j -C $(LIB_DIR)

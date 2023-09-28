@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/09/27 19:47:48 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/09/28 16:44:59 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <stdio.h>
+# include <fcntl.h>
 
 /* --- HEADER FILES --- */
 # include "libft.h"
@@ -40,10 +41,18 @@
 
 /* --- ERROR MESSAGES --- */
 # define MSG_ERR_MALLOC "Memory allocation has failed. \x1B[0m\n\x1B[33mPlease\
- make sure enough memory is dedicated to the process.\n"
+ Make sure enough memory is dedicated to the process.\n\x1B[0m"
+# define MSG_ERR_1_ARG "Only 1 argument was entered. \x1B[0m\n\x1B[33mPlease\
+ make sure to enter the map path as an argument.\n\x1B[0m"
+# define MSG_ERR_MULTIPLE_ARGS "Multiple arguments were entered. \x1B[0m\n\x1B[33mPlease\
+ Make sure to enter the map path as an argument only.\n\x1B[0m"
+# define MSG_ERR_FILE_MAP_NOT_FOUND "File was not found. \x1B[0m\n\x1B[33mPlease\
+ Make sure to enter the right map file path.\n\x1B[0m"
 
+/* --- STRUCTS --- */
 typedef struct s_parsing
 {
+	char	*file_path;
 	char	*no_path;
 	char	*so_path;
 	char	*we_path;
@@ -57,5 +66,8 @@ typedef struct s_cub
 {
 	t_parsing	parsing;
 }	t_cub;
+
+/* --- PARSING --- */
+int	parsing(t_cub *cub, int argc, char **argv);
 
 #endif
