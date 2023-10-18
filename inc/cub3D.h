@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/04 05:51:06 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:15:05 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,17 @@
 
 /* --- ERROR MESSAGES --- */
 # define MSG_ERR_MALLOC "Memory allocation has failed. \x1B[0m\n\x1B[33mPlease\
- Make sure enough memory is dedicated to the process.\n\x1B[0m"
+ make sure enough memory is dedicated to the process.\n\x1B[0m"
 # define MSG_ERR_1_ARG "Only 1 argument was entered. \x1B[0m\n\x1B[33mPlease\
  make sure to enter the map path as an argument.\n\x1B[0m"
 # define MSG_ERR_MULTIPLE_ARGS "Multiple arguments were entered. \x1B[0m\n\x1B[33mPlease\
- Make sure to enter the map path as an argument only.\n\x1B[0m"
+ make sure to enter the map path as an argument only.\n\x1B[0m"
 # define MSG_ERR_FILE_MAP_NOT_FOUND "File was not found. \x1B[0m\n\x1B[33mPlease\
- Make sure to enter the right map file path.\n\x1B[0m"
- # define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
- Make sure the right file permissions are set.\n\x1B[0m"
+ make sure to enter the right map file path.\n\x1B[0m"
+# define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
+ make sure the right file permissions are set.\n\x1B[0m"
+# define MSG_ERR_WRONG_EXT "A non .cub file was entered. \x1B[0m\n\x1B[33mPlease\
+ make sure to only enter .cub files.\n\x1B[0m"
 
 /* --- STRUCTS --- */
 typedef struct s_parsing

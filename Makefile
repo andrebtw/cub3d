@@ -6,12 +6,12 @@
 #    By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 22:03:15 by anrodri2          #+#    #+#              #
-#    Updated: 2023/10/02 14:11:23 by anrodri2         ###   ########.fr        #
+#    Updated: 2023/10/18 12:21:12 by anrodri2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### FINAL COMPILATION FILE ###
-NAME = cub3d
+NAME = cub3D
 
 #### DIRECTORIES ####
 SRC_DIR = src/

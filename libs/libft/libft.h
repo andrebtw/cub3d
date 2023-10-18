@@ -46,7 +46,10 @@ int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_isspace(int c);
 
-// Character transformation
+// String checking //
+int		ft_isextension(char *file, char *ext);
+
+// Character transformation //
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 

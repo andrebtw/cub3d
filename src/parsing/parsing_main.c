@@ -41,9 +41,21 @@ int	file_exists_check(char **argv)
 	return (EXIT_SUCCESS);
 }
 
+int	cub_file_check(char **argv)
+{
+	if (!ft_isextension(argv[1], ".cub"))
+	{
+		ft_putstr_fd(MSG_ERR_WRONG_EXT, STDERR_FILENO);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	parsing(t_cub *cub, int argc, char **argv)
 {
 	if (arg_checking(argc))
+		return (EXIT_FAILURE);
+	if (cub_file_check(argv))
 		return (EXIT_FAILURE);
 	if (file_exists_check(argv))
 		return (EXIT_FAILURE);
