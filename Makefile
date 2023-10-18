@@ -6,7 +6,7 @@
 #    By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 22:03:15 by anrodri2          #+#    #+#              #
-#    Updated: 2023/10/18 12:21:12 by anrodri2         ###   ########.fr        #
+#    Updated: 2023/10/18 12:58:12 by anrodri2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ MLX = mlx_linux/libmlx.a
 SRCS =	main.c \
 		parsing/parsing_main.c \
 		parsing/parsing_file.c \
-		parsing/fill_struct.c
+		parsing/fill_struct.c \
+		parsing/map/parsing_map_main.c 
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

@@ -62,5 +62,7 @@ int	parsing(t_cub *cub, int argc, char **argv)
 	cub->parsing.file_path = argv[1];
 	if (parsing_file(cub))
 		return (EXIT_FAILURE);
+	if (parsing_map(cub))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing_map_main.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 22:28:22 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/18 15:58:06 by anrodri2         ###   ########.fr       */
+/*   Created: 2023/10/18 12:57:06 by anrodri2          #+#    #+#             */
+/*   Updated: 2023/10/18 15:57:28 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-# include <stdio.h>
 
-int	main(int argc, char **argv)
+int	illegal_chars_check(t_cub *cub)
 {
-	int		ret_code;
-	t_cub	cub;
+	size_t	i;
+	size_t	j;
 
-	ret_code = parsing(&cub, argc, argv);
-	if (ret_code)
-		return (ret_code);
+	i = 0;
+	while (cub->parsing.map[i])
+	{
+		j = 0;
+		while (cub->parsing.map[i][j])
+		{
+			if (!ft_strchr(POSSIBLE_CHARS, cub->parsing.map[i][j]))
+			{
+				ft_putstr_fd(MSG_ERR_ILLEGAL_CHARS_MAP, STDERR_FILENO);
+				return (EXIT_FAILURE);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
+int	parsing_map(t_cub *cub)
+{
+	if (illegal_chars_check(cub))
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

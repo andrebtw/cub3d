@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:23:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/04 08:34:19 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/18 12:55:16 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ size_t	map_malloc_size(t_cub *cub)
 
 int	write_map_file_loop(t_cub *cub, int fd)
 {
-	char	*tmp_str;	//*ceiling_color_rgb;
+	char	*tmp_str;
 	size_t	i;
 
 	i = 0;
