@@ -19,6 +19,7 @@
 # include <stdint.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 /* --- HEADER FILES --- */
 # include "libft.h"
@@ -76,5 +77,6 @@ int		parsing(t_cub *cub, int argc, char **argv);
 int		parsing_file(t_cub *cub);
 void	get_cfg(t_cub *cub);
 void	get_map(t_cub *cub, int	i);
+int		parse_cfg(t_cub *cub);
 
 #endif

@@ -11,18 +11,20 @@
 /* ************************************************************************** */
 
 #include "cub3D.h"
-# include <stdio.h>
 
 int	main(int argc, char **argv)
 {
 	int		ret_code;
 	t_cub	cub;
-	int		i = -1;
+	//int		i = -1;
 
 	ret_code = parsing(&cub, argc, argv);
 	if (ret_code)
 		return (ret_code);
+	/*while (cub.parsing.cfg[++i])
+		printf("%s", cub.parsing.cfg[i]);
+	i = -1;
 	while (cub.parsing.map[++i])
-		printf("%s", cub.parsing.map[i]);
+		printf("%s", cub.parsing.map[i]);*/
 	return (EXIT_SUCCESS);
 }

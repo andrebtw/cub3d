@@ -31,7 +31,8 @@ MLX = mlx_linux/libmlx.a
 SRCS =	main.c \
 		parsing/parsing_main.c \
 		parsing/parsing_file.c \
-		parsing/fill_struct.c
+		parsing/fill_struct.c \
+		parsing/cfg_parsing/check_cfg.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
