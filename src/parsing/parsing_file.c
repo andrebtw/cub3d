@@ -43,7 +43,7 @@ size_t	map_malloc_size(t_cub *cub)
 
 int	write_map_file_loop(t_cub *cub, int fd)
 {
-	char	*tmp_str;
+	char	*tmp_str;	//*ceiling_color_rgb;
 	size_t	i;
 
 	i = 0;
@@ -99,5 +99,6 @@ int	parsing_file(t_cub *cub)
 	return_code = write_map_file(cub);
 	if (return_code)
 		return (exit(return_code), EXIT_FAILURE);
+	get_cfg(cub);
 	return (EXIT_SUCCESS);
 }

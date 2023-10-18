@@ -62,6 +62,7 @@ typedef struct s_parsing
 	int		*floor_color_rgb;
 	int		*ceiling_color_rgb;
 	char	**map;
+	char 	**cfg;
 	char	**file;
 }	t_parsing;
 
@@ -71,7 +72,9 @@ typedef struct s_cub
 }	t_cub;
 
 /* --- PARSING --- */
-int	parsing(t_cub *cub, int argc, char **argv);
-int	parsing_file(t_cub *cub);
+int		parsing(t_cub *cub, int argc, char **argv);
+int		parsing_file(t_cub *cub);
+void	get_cfg(t_cub *cub);
+void	get_map(t_cub *cub, int	i);
 
 #endif

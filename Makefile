@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 ### FINAL COMPILATION FILE ###
-NAME = cub3D
+NAME = cub3d
 
 #### DIRECTORIES ####
 SRC_DIR = src/
@@ -30,7 +30,8 @@ MLX = mlx_linux/libmlx.a
 
 SRCS =	main.c \
 		parsing/parsing_main.c \
-		parsing/parsing_file.c
+		parsing/parsing_file.c \
+		parsing/fill_struct.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
