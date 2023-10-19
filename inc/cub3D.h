@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/18 15:55:38 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:10:22 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	get_map(t_cub *cub, int	i);
 
 /* --- MAP PARSING --- */
 int		parsing_map(t_cub *cub);
+int		parsing_map_loop(t_cub *cub);
 # define POSSIBLE_CHARS "01NSEW \n"
 
 #endif
