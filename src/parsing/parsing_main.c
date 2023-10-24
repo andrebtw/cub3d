@@ -47,7 +47,7 @@ int	parsing(t_cub *cub, int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (file_exists_check(argv))
 		return (EXIT_FAILURE);
-	cub->parsing->file_path = ft_strdup(argv[1]);
+	cub->parsing.file_path = argv[1];
 	if (parsing_file(cub))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

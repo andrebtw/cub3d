@@ -69,7 +69,7 @@ typedef struct s_parsing
 
 typedef struct s_cub
 {
-	t_parsing	*parsing;
+	t_parsing	parsing;
 }	t_cub;
 
 /* --- PARSING --- */

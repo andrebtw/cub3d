@@ -19,9 +19,9 @@ int	parse_cfg(t_cub *cub)
 	int	i;
 
 	i = 0;
-	while (cub->parsing->cfg[i])
+	while (cub->parsing.cfg[i])
 	{
-		check_cfg(cub, cub->parsing->cfg[i]);
+		check_cfg(cub, cub->parsing.cfg[i]);
 		i++;
 	}
 	return (0);
@@ -40,13 +40,10 @@ int	check_cfg(t_cub *cub, char *str)
 	while (dir[i + 1])
 	{
 		if (dir[i] == cfg_dir[0] && dir[i + 1] == cfg_dir[1])
-		{
-			if (get_textures(cfg_dir, ++str, cub) == NULL)
-				return (ft_putstr_fd("ERROR", 2), -1);
-		}
+			return(get_textures(cfg_dir, ++str, cub), free(cfg_dir), 0);
 		i++;
 	}
 	if ((cfg_dir[0] == 'F' || cfg_dir[0] == 'C') && cfg_dir[1] == ' ')
-		get_colors(cfg_dir, ++str, cub);
-	return (free(cfg_dir), 0);
+		return (get_colors(cfg_dir, ++str, cub), free(cfg_dir), 0);
+	return (0);
 }

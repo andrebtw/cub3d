@@ -18,18 +18,17 @@ int	main(int argc, char **argv)
 	t_cub	cub;
 	int		i = -1;
 
-	cub.parsing = malloc(sizeof(t_parsing));
 	ret_code = parsing(&cub, argc, argv);
 	if (ret_code)
 		return (ret_code);
-	printf("%s", cub.parsing->no_path);
-	printf("%s", cub.parsing->so_path);
-	printf("%s", cub.parsing->we_path);
-	printf("%s", cub.parsing->ea_path);
+	printf("%s", cub.parsing.no_path);
+	printf("%s", cub.parsing.so_path);
+	printf("%s", cub.parsing.we_path);
+	printf("%s", cub.parsing.ea_path);
 	while (++i < 3)
 	{
-		printf("F : %d\n", cub.parsing->floor_color_rgb[i]);
-		printf("C : %d\n", cub.parsing->ceiling_color_rgb[i]);
+		printf("F : %d\n", cub.parsing.floor_color_rgb[i]);
+		printf("C : %d\n", cub.parsing.ceiling_color_rgb[i]);
 	}
 	return (EXIT_SUCCESS);
 }

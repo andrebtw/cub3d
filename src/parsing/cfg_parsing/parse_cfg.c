@@ -18,13 +18,13 @@ char	*get_textures(char *dir, char *cfg, t_cub *cub)
 	while (ft_isspace(*cfg))
 		cfg++;
 	if (!ft_strcmp(dir, "NO"))
-		return (cub->parsing->no_path = ft_strdup(cfg));
+		return (cub->parsing.no_path = ft_strdup(cfg));
 	else if (!ft_strcmp(dir, "SO"))
-		return (cub->parsing->so_path = ft_strdup(cfg));
+		return (cub->parsing.so_path = ft_strdup(cfg));
 	else if (!ft_strcmp(dir, "WE"))
-		return (cub->parsing->we_path = ft_strdup(cfg));
+		return (cub->parsing.we_path = ft_strdup(cfg));
 	else if (!ft_strcmp(dir, "EA"))
-		return (cub->parsing->ea_path = ft_strdup(cfg));
+		return (cub->parsing.ea_path = ft_strdup(cfg));
 	return (NULL);
 }
 
@@ -40,12 +40,12 @@ int	get_colors(char *side, char *cfg, t_cub *cub)
 	if (!ft_strncmp(side, "F", 1))
 	{
 		while (++i < 3)
-			cub->parsing->floor_color_rgb[i] = ft_atoi(splited_colors[i]);
+			cub->parsing.floor_color_rgb[i] = ft_atoi(splited_colors[i]);
 	}
 	else if (!ft_strncmp(side, "C", 1))
 	{
 		while (++i < 3)
-			cub->parsing->ceiling_color_rgb[i] = ft_atoi(splited_colors[i]);
+			cub->parsing.ceiling_color_rgb[i] = ft_atoi(splited_colors[i]);
 	}
 	i = -1;
 	while (++i < 3)
