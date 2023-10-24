@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/24 14:23:42 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:33:37 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@
  make sure to enter a valid map.\n\x1B[0m"
 # define MSG_ERR_NO_SEP_CFG_MAP "There is no new line between the configuration part and the map. \x1B[0m\n\x1B[33mPlease\
  make sure to have an empty line between the configuration part and the map.\n\x1B[0m"
+# define MSG_ERR_MULTIPLE_SPAWNS "Multiple spawn locations were found. \x1B[0m\n\x1B[33mPlease\
+ make sure to only enter one spawn location.\n\x1B[0m"
 
 /* --- STRUCTS --- */
 typedef struct s_parsing
@@ -77,6 +79,7 @@ typedef struct s_parsing
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
+	int		spawn_direction;
 	int		floor_color_rgb[3];
 	int		ceiling_color_rgb[3];
 	char	**map;
