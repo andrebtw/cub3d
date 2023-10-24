@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:09:25 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/24 14:03:28 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:25:06 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ int	check_zeros(t_cub *cub, size_t *y, size_t *x, size_t last_y)
 		while (cub->parsing.map[*y][*x])
 		{
 			if (ft_strchr(NOT_WALLS, cub->parsing.map[*y][*x]))
+			{
 				if (check_if_out(cub, y, x, last_y))
 				{
 					ft_putstr_fd(MSG_ERR_MAP_NOT_CLOSED, STDERR_FILENO);
 					return (EXIT_FAILURE);
 				}
+			}
 			*x = *x + 1;
 		}
 		*y = *y + 1;
@@ -73,7 +75,7 @@ int	parsing_map_loop(t_cub *cub)
 	size_t	y;
 	size_t	x;
 	size_t	last_y;
-	
+
 	y = 1;
 	last_y = map_size(cub);
 	if (check_zeros(cub, &y, &x, last_y))

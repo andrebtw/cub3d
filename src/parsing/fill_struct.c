@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 17:22:00 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/10/24 16:18:58 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:23:41 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	get_cfg(t_cub *cub)
 	return (EXIT_SUCCESS);
 }
 
-int	get_map(t_cub *cub, int	i)
+int	get_map(t_cub *cub, int i)
 {
 	size_t		len;
 	int			j;

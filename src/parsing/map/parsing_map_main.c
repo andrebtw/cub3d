@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:57:06 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/24 14:40:39 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:24:07 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	empty_lines_check(t_cub *cub)
 			if (cub->parsing.map[i][0] == '\n')
 				i++;
 			else
-				break;
+				break ;
 		}
 		j = 0;
 		if (cub->parsing.map[i][j] == '\n')
