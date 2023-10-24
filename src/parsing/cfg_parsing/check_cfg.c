@@ -21,7 +21,11 @@ int	parse_cfg(t_cub *cub)
 	i = 0;
 	while (cub->parsing.cfg[i])
 	{
-		check_cfg(cub, cub->parsing.cfg[i]);
+		if (check_cfg(cub, cub->parsing.cfg[i]) < 0)
+		{
+			ft_putstr_fd(MSG_ERR_WRONG_ID, 2);
+			exit(-1);
+		}
 		i++;
 	}
 	return (0);
@@ -45,5 +49,5 @@ int	check_cfg(t_cub *cub, char *str)
 	}
 	if ((cfg_dir[0] == 'F' || cfg_dir[0] == 'C') && cfg_dir[1] == ' ')
 		return (get_colors(cfg_dir, ++str, cub), free(cfg_dir), 0);
-	return (0);
+	return (-1);
 }

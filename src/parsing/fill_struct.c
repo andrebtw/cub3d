@@ -13,6 +13,8 @@
 #include "cub3D.h"
 
 void	get_map(t_cub *cub, int i);
+int		tablen(char **tab);
+void	check_arg_nmb_by_line(t_cub *cub);
 
 void	get_cfg(t_cub *cub)
 {
@@ -32,6 +34,7 @@ void	get_cfg(t_cub *cub)
 		i++;
 	}
 	cub->parsing.cfg[count++] = NULL;
+	check_arg_nmb_by_line(cub);
 	get_map(cub, i);
 }
 
@@ -52,4 +55,38 @@ void	get_map(t_cub *cub, int	i)
 		j++;
 	}
 	cub->parsing.map[j] = NULL;
+}
+
+void	check_arg_nmb_by_line(t_cub *cub)
+{
+	char	**splited_line;
+	int		i;
+
+	i = -1;
+	while (cub->parsing.cfg[++i])
+	{
+		splited_line = ft_split(cub->parsing.cfg[i], ' ');
+		if (i < 4 && ft_strlen(splited_line[0]) != 2)
+		{
+			ft_putstr_fd(MSG_ERR_WRONG_ID, 2);
+			ft_free_tab(splited_line);
+			exit (1);
+		}
+		if (tablen(splited_line) != 2)
+		{
+			ft_putstr_fd(MSG_ERR_CFG, 2);
+			ft_free_tab(splited_line);
+			exit(1);
+		}
+	}
+}
+
+int tablen(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }

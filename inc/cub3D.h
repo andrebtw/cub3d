@@ -51,6 +51,12 @@
  Make sure to enter the right map file path.\n\x1B[0m"
  # define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
  Make sure the right file permissions are set.\n\x1B[0m"
+# define MSG_ERR_WRONG_ID "Error \x1B[0m\n\x1B[33m\
+There's a wrong identifier in the configuration file.\n\x1B[0m"
+# define MSG_ERR_CFG "Error \x1B[0m\n\x1B[33m\
+There's to much information on a line of your configuration file.\n\x1B[0m"
+# define MSG_ERR_COLOUR "Error \x1B[0m\n\x1B[33m\
+An RGB value is incorrect, be sure to input 3 values each between 0 and 255.\n\x1B[0m"
 
 /* --- STRUCTS --- */
 typedef struct s_parsing
