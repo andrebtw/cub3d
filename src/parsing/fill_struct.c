@@ -21,17 +21,17 @@ void	get_cfg(t_cub *cub)
 
 	i = 0;
 	count = 0;
-	cub->parsing.cfg = malloc(7 * sizeof(char **));
-	while (cub->parsing.file[i] && count < 6)
+	cub->parsing->cfg = malloc(7 * sizeof(char **));
+	while (cub->parsing->file[i] && count < 6)
 	{
-		if (cub->parsing.file[i][0] != '\n')
+		if (cub->parsing->file[i][0] != '\n')
 		{
-			cub->parsing.cfg[count] = ft_strdup(cub->parsing.file[i]);
+			cub->parsing->cfg[count] = ft_strdup(cub->parsing->file[i]);
 			count++;
 		}
 		i++;
 	}
-	cub->parsing.cfg[count++] = NULL;
+	cub->parsing->cfg[count++] = NULL;
 	get_map(cub, i);
 }
 
@@ -42,14 +42,14 @@ void	get_map(t_cub *cub, int	i)
 
 	j = 0;
 	len = 0;
-	while (cub->parsing.file[len])
+	while (cub->parsing->file[len])
 		len++;
-	cub->parsing.map = malloc((len - i + 1) * sizeof(char **));
-	while (cub->parsing.file[i])
+	cub->parsing->map = malloc((len - i + 1) * sizeof(char **));
+	while (cub->parsing->file[i])
 	{
-		cub->parsing.map[j] = ft_strdup(cub->parsing.file[i]);
+		cub->parsing->map[j] = ft_strdup(cub->parsing->file[i]);
 		i++;
 		j++;
 	}
-	cub->parsing.map[j] = NULL;
+	cub->parsing->map[j] = NULL;
 }

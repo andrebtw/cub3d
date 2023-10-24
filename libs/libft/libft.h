@@ -74,6 +74,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 // strlen : size of string
 size_t	ft_strlen(const char *s);
 // strncmp : compares both strings in n chars
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 // strncpy : copies string from src to dest in n chars
 char	*ft_strncpy(char *dest, const char *src, size_t n);

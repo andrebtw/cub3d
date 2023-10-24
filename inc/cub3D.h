@@ -60,8 +60,8 @@ typedef struct s_parsing
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	int		*floor_color_rgb;
-	int		*ceiling_color_rgb;
+	int		floor_color_rgb[3];
+	int		ceiling_color_rgb[3];
 	char	**map;
 	char 	**cfg;
 	char	**file;
@@ -69,7 +69,7 @@ typedef struct s_parsing
 
 typedef struct s_cub
 {
-	t_parsing	parsing;
+	t_parsing	*parsing;
 }	t_cub;
 
 /* --- PARSING --- */
@@ -78,5 +78,7 @@ int		parsing_file(t_cub *cub);
 void	get_cfg(t_cub *cub);
 void	get_map(t_cub *cub, int	i);
 int		parse_cfg(t_cub *cub);
+char	*get_textures(char *dir, char *cfg, t_cub *cub);
+int 	get_colors(char *side, char *cfg, t_cub *cub);
 
 #endif

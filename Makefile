@@ -32,7 +32,8 @@ SRCS =	main.c \
 		parsing/parsing_main.c \
 		parsing/parsing_file.c \
 		parsing/fill_struct.c \
-		parsing/cfg_parsing/check_cfg.c
+		parsing/cfg_parsing/check_cfg.c \
+		parsing/cfg_parsing/parse_cfg.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

@@ -18,7 +18,7 @@ size_t	map_malloc_size(t_cub *cub)
 	size_t	counter;
 	int		fd_line_counter;
 
-	fd_line_counter = open(cub->parsing.file_path, O_RDONLY);
+	fd_line_counter = open(cub->parsing->file_path, O_RDONLY);
 	if (fd_line_counter == -1)
 	{
 		ft_putstr_fd(MSG_ERR_FILE_ACCESS, STDERR_FILENO);
@@ -51,7 +51,7 @@ int	write_map_file_loop(t_cub *cub, int fd)
 	if (!tmp_str)
 	{
 		ft_putstr_fd(MSG_ERR_MALLOC, STDERR_FILENO);
-		return (close(fd), free(cub->parsing.file), K_ERR_MALLOC);
+		return (close(fd), free(cub->parsing->file), K_ERR_MALLOC);
 	}
 	while (tmp_str)
 	{
@@ -59,13 +59,13 @@ int	write_map_file_loop(t_cub *cub, int fd)
 		tmp_str = get_next_line(fd);
 		if (!tmp_str)
 			break ;
-		cub->parsing.file[i] = ft_strdup(tmp_str);
-		if (!cub->parsing.file[i])
+		cub->parsing->file[i] = ft_strdup(tmp_str);
+		if (!cub->parsing->file[i])
 			return (close(fd), ft_free_tab(\
-			cub->parsing.file), free(tmp_str), K_ERR_MALLOC);
+			cub->parsing->file), free(tmp_str), K_ERR_MALLOC);
 		i++;
 	}
-	cub->parsing.file[i] = NULL;
+	cub->parsing->file[i] = NULL;
 	return (close(fd), EXIT_SUCCESS);
 }
 
@@ -74,7 +74,7 @@ int	write_map_file(t_cub *cub)
 	int		fd;
 	int		return_code;
 
-	fd = open(cub->parsing.file_path, O_RDONLY);
+	fd = open(cub->parsing->file_path, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr_fd(MSG_ERR_FILE_ACCESS, STDERR_FILENO);
@@ -90,8 +90,8 @@ int	parsing_file(t_cub *cub)
 {
 	int	return_code;
 
-	cub->parsing.file = (char **) malloc (map_malloc_size(cub));
-	if (!cub->parsing.file)
+	cub->parsing->file = (char **) malloc (map_malloc_size(cub));
+	if (!cub->parsing->file)
 	{
 		ft_putstr_fd(MSG_ERR_MALLOC, STDERR_FILENO);
 		exit(K_ERR_MALLOC);
