@@ -27,11 +27,11 @@ int	arg_checking(int argc)
 	return (EXIT_SUCCESS);
 }
 
-int	file_exists_check(char **argv)
+int	file_exists_check(char *file)
 {
 	int	fd;
 
-	fd = open(argv[1], O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr_fd(MSG_ERR_FILE_MAP_NOT_FOUND, STDERR_FILENO);
@@ -57,7 +57,7 @@ int	parsing(t_cub *cub, int argc, char **argv)
 		return (EXIT_FAILURE);
 	if (cub_file_check(argv))
 		return (EXIT_FAILURE);
-	if (file_exists_check(argv))
+	if (file_exists_check(argv[1]))
 		return (EXIT_FAILURE);
 	cub->parsing.file_path = argv[1];
 	if (parsing_file(cub))

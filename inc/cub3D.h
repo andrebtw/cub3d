@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/19 12:10:22 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/24 14:23:42 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,16 @@
  make sure the right file permissions are set.\n\x1B[0m"
 # define MSG_ERR_WRONG_EXT "A non .cub file was entered. \x1B[0m\n\x1B[33mPlease\
  make sure to only enter .cub files.\n\x1B[0m"
- # define MSG_ERR_ILLEGAL_CHARS_MAP "Illegal characters were found in the map file. \x1B[0m\n\x1B[33mPlease\
+# define MSG_ERR_ILLEGAL_CHARS_MAP "Illegal characters were found in the map file. \x1B[0m\n\x1B[33mPlease\
  make sure to enter a valid map.\n\x1B[0m"
+# define MSG_ERR_MAP_NOT_CLOSED "The map entered is not closed by walls. \x1B[0m\n\x1B[33mPlease\
+ make sure to enter a valid map.\n\x1B[0m"
+# define MSG_ERR_END_OF_LINE_IN_MAP "The map entered is not closed by walls. \x1B[0m\n\x1B[33mPlease\
+ make sure to enter a valid map.\n\x1B[0m"
+# define MSG_ERR_EMPTY_LINE "The map has an empty line. \x1B[0m\n\x1B[33mPlease\
+ make sure to enter a valid map.\n\x1B[0m"
+# define MSG_ERR_NO_SEP_CFG_MAP "There is no new line between the configuration part and the map. \x1B[0m\n\x1B[33mPlease\
+ make sure to have an empty line between the configuration part and the map.\n\x1B[0m"
 
 /* --- STRUCTS --- */
 typedef struct s_parsing
@@ -69,8 +77,8 @@ typedef struct s_parsing
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	int		*floor_color_rgb;
-	int		*ceiling_color_rgb;
+	int		floor_color_rgb[3];
+	int		ceiling_color_rgb[3];
 	char	**map;
 	char 	**cfg;
 	char	**file;
