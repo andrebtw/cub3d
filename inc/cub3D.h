@@ -54,9 +54,11 @@
 # define MSG_ERR_WRONG_ID "Error \x1B[0m\n\x1B[33m\
 There's a wrong identifier in the configuration file.\n\x1B[0m"
 # define MSG_ERR_CFG "Error \x1B[0m\n\x1B[33m\
-There's to much information on a line of your configuration file.\n\x1B[0m"
+There's too much information on a line of your configuration file.\n\x1B[0m"
 # define MSG_ERR_COLOUR "Error \x1B[0m\n\x1B[33m\
 An RGB value is incorrect, be sure to input 3 values each between 0 and 255.\n\x1B[0m"
+# define MSG_ERR_TEXTURE_FILE "Error \x1B[0m\n\x1B[33m\
+A texture file can't be opened.\n\x1B[0m"
 
 /* --- STRUCTS --- */
 typedef struct s_parsing
@@ -86,5 +88,6 @@ void	get_map(t_cub *cub, int	i);
 int		parse_cfg(t_cub *cub);
 char	*get_textures(char *dir, char *cfg, t_cub *cub);
 int 	get_colors(char *side, char *cfg, t_cub *cub);
+int		file_exists_check(char *file);
 
 #endif

@@ -12,7 +12,9 @@
 
 #include "cub3D.h"
 
-int	check_cfg(t_cub *cub, char *str);
+int		check_cfg(t_cub *cub, char *str);
+void	check_texture_files(t_cub *cub);
+int 	open_file(char *file);
 
 int	parse_cfg(t_cub *cub)
 {
@@ -28,6 +30,7 @@ int	parse_cfg(t_cub *cub)
 		}
 		i++;
 	}
+	check_texture_files(cub);
 	return (0);
 }
 
@@ -50,4 +53,25 @@ int	check_cfg(t_cub *cub, char *str)
 	if ((cfg_dir[0] == 'F' || cfg_dir[0] == 'C') && cfg_dir[1] == ' ')
 		return (get_colors(cfg_dir, ++str, cub), free(cfg_dir), 0);
 	return (-1);
+}
+
+void	check_texture_files(t_cub *cub)
+{
+	if (open_file(cub->parsing.no_path) || open_file(cub->parsing.so_path)
+		|| open_file(cub->parsing.we_path) || open_file(cub->parsing.we_path))
+		exit(EXIT_FAILURE);
+}
+
+int open_file(char *file)
+{
+	int	fd;
+
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr_fd(MSG_ERR_TEXTURE_FILE, STDERR_FILENO);
+		return (EXIT_FAILURE);
+	}
+	close(fd);
+	return (EXIT_SUCCESS);
 }
