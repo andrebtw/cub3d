@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isextension.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 22:28:22 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/24 13:12:51 by anrodri2         ###   ########.fr       */
+/*   Created: 2023/10/18 12:05:04 by anrodri2          #+#    #+#             */
+/*   Updated: 2023/10/18 12:19:06 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-# include <stdio.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_isextension(char *file, char *ext)
 {
-	int		ret_code;
-	t_cub	cub;
+	long	file_size;
+	long	ext_size;
 
-	ret_code = parsing(&cub, argc, argv);
-	if (ret_code)
-		return (ret_code);
-	return (EXIT_SUCCESS);
+	ext_size = ft_strlen(ext);
+	file_size = ft_strlen(file);
+	while (ext_size >= 0)
+	{
+		if (!file_size)
+			return (0);
+		if (ext[ext_size] != file[file_size])
+			return (0);
+		file_size--;
+		ext_size--;
+	}
+	return (1);
 }

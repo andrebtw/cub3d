@@ -27,11 +27,11 @@ int	arg_checking(int argc)
 	return (EXIT_SUCCESS);
 }
 
-int	file_exists_check(char **argv)
+int	file_exists_check(char *file)
 {
 	int	fd;
 
-	fd = open(argv[1], O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
 		ft_putstr_fd(MSG_ERR_FILE_MAP_NOT_FOUND, STDERR_FILENO);
@@ -41,14 +41,28 @@ int	file_exists_check(char **argv)
 	return (EXIT_SUCCESS);
 }
 
+int	cub_file_check(char **argv)
+{
+	if (!ft_isextension(argv[1], ".cub"))
+	{
+		ft_putstr_fd(MSG_ERR_WRONG_EXT, STDERR_FILENO);
+		return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	parsing(t_cub *cub, int argc, char **argv)
 {
 	if (arg_checking(argc))
 		return (EXIT_FAILURE);
-	if (file_exists_check(argv))
+	if (cub_file_check(argv))
+		return (EXIT_FAILURE);
+	if (file_exists_check(argv[1]))
 		return (EXIT_FAILURE);
 	cub->parsing.file_path = argv[1];
 	if (parsing_file(cub))
+		return (EXIT_FAILURE);
+	if (parsing_map(cub))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
