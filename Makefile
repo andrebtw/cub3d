@@ -6,7 +6,7 @@
 #    By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 22:03:15 by anrodri2          #+#    #+#              #
-#    Updated: 2023/10/19 12:10:36 by anrodri2         ###   ########.fr        #
+#    Updated: 2023/10/24 14:46:25 by anrodri2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ LIBFT = $(LIB_DIR)/libft.a
 MLX = mlx_linux/libmlx.a
 
 SRCS =	main.c \
+		custom_exit.c \
 		parsing/parsing_main.c \
 		parsing/parsing_file.c \
 		parsing/fill_struct.c \

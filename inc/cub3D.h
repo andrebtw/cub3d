@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/24 14:33:37 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:09:29 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,14 @@ typedef struct s_cub
 	t_parsing	parsing;
 }	t_cub;
 
+/* --- MAIN FUNCTIONS --- */
+void	custom_exit(t_cub *cub, int exit_code);
+
 /* --- PARSING --- */
 int		parsing(t_cub *cub, int argc, char **argv);
 int		parsing_file(t_cub *cub);
-void	get_cfg(t_cub *cub);
-void	get_map(t_cub *cub, int	i);
+int		get_cfg(t_cub *cub);
+int		get_map(t_cub *cub, int	i);
 
 /* --- MAP PARSING --- */
 int		parsing_map(t_cub *cub);

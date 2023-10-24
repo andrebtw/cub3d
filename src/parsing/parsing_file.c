@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:23:43 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/18 12:55:16 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:06:16 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,5 @@ int	parsing_file(t_cub *cub)
 	return_code = write_map_file(cub);
 	if (return_code)
 		return (exit(return_code), EXIT_FAILURE);
-	get_cfg(cub);
 	return (EXIT_SUCCESS);
 }

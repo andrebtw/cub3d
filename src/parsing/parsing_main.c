@@ -1,12 +1,12 @@
-/* 1449830 ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parsing_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 10:51:26 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/04 05:48:45 by anrodri2         ###   ########.fr       */
+/*   Created: 2023/10/24 16:07:20 by anrodri2          #+#    #+#             */
+/*   Updated: 2023/10/24 16:11:56 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ int	parsing(t_cub *cub, int argc, char **argv)
 	cub->parsing.file_path = argv[1];
 	if (parsing_file(cub))
 		return (EXIT_FAILURE);
+	if (get_cfg(cub))
+	{
+		ft_putstr_fd(MSG_ERR_MALLOC, STDERR_FILENO);
+		return (K_ERR_MALLOC);
+	}
 	if (parsing_map(cub))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
