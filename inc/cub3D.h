@@ -89,6 +89,7 @@ typedef struct s_parsing
 	char	*we_path;
 	char	*ea_path;
 	int		spawn_direction;
+	int		spawn_pos[2];
 	int		floor_color_rgb[3];
 	int		ceiling_color_rgb[3];
 	char	**map;
@@ -108,7 +109,7 @@ void	custom_exit(t_cub *cub, int exit_code);
 int		parsing(t_cub *cub, int argc, char **argv);
 int		parsing_file(t_cub *cub);
 int		parse_cfg(t_cub *cub);
-char	*get_textures(char *dir, char *cfg, t_cub *cub);
+void	get_textures(char *dir, char *cfg, t_cub *cub);
 int 	get_colors(char *side, char *cfg, t_cub *cub);
 int		file_exists_check(char *file);
 int		get_cfg(t_cub *cub);

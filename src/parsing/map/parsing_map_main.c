@@ -78,6 +78,8 @@ int	found_location_check(t_cub *cub, int *found_location, size_t i, size_t j)
 		cub->parsing.spawn_direction = K_E;
 	if (cub->parsing.map[i][j] == 'W')
 		cub->parsing.spawn_direction = K_W;
+	cub->parsing.spawn_pos[0] = (int)i;
+	cub->parsing.spawn_pos[1] = (int)j;
 	return (EXIT_SUCCESS);
 }
 

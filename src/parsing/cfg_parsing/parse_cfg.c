@@ -14,21 +14,41 @@
 
 int	ft_isnmb(char *str);
 
-char	*get_textures(char *dir, char *cfg, t_cub *cub)
+void	get_textures_sides(char *dir, char *cfg, t_cub *cub)
+{
+	if (!ft_strcmp(dir, "WE"))
+	{
+		cub->parsing.we_path = ft_strdup(cfg);
+		if (!cub->parsing.we_path)
+			custom_exit(cub, K_ERR_MALLOC);
+	}
+	else if (!ft_strcmp(dir, "EA"))
+	{
+		cub->parsing.ea_path = ft_strdup(cfg);
+		if (!cub->parsing.ea_path)
+			custom_exit(cub, K_ERR_MALLOC);
+	}
+}
+
+void	get_textures(char *dir, char *cfg, t_cub *cub)
 {
 	cfg++;
 	cfg[ft_strlen(cfg) - 1] = '\0';
 	while (ft_isspace(*cfg))
 		cfg++;
 	if (!ft_strcmp(dir, "NO"))
-		return (cub->parsing.no_path = ft_strdup(cfg));
+	{
+		cub->parsing.no_path = ft_strdup(cfg);
+		if (!cub->parsing.no_path)
+			custom_exit(cub, K_ERR_MALLOC);
+	}
 	else if (!ft_strcmp(dir, "SO"))
-		return (cub->parsing.so_path = ft_strdup(cfg));
-	else if (!ft_strcmp(dir, "WE"))
-		return (cub->parsing.we_path = ft_strdup(cfg));
-	else if (!ft_strcmp(dir, "EA"))
-		return (cub->parsing.ea_path = ft_strdup(cfg));
-	return (NULL);
+	{
+		cub->parsing.so_path = ft_strdup(cfg);
+		if (!cub->parsing.so_path)
+			custom_exit(cub, K_ERR_MALLOC);
+	}
+	get_textures_sides(dir, cfg, cub);
 }
 
 int	get_colors(char *side, char *cfg, t_cub *cub)
