@@ -28,9 +28,7 @@ int	main(int argc, char **argv)
 {
 	int		ret_code;
 	t_cub	cub;
-	int		i;
-
-	i = -1;
+	values_init(&cub);
 	ret_code = parsing(&cub, argc, argv);
 	if (ret_code)
 		return (ret_code);

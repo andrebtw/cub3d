@@ -94,7 +94,7 @@ int	parsing_file(t_cub *cub)
 	if (!cub->parsing.file)
 	{
 		ft_putstr_fd(MSG_ERR_MALLOC, STDERR_FILENO);
-		exit(K_ERR_MALLOC);
+		custom_exit(cub, K_ERR_MALLOC);
 	}
 	return_code = write_map_file(cub);
 	if (return_code)

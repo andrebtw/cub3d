@@ -27,7 +27,7 @@ int	parse_cfg(t_cub *cub)
 		if (check_cfg(cub, cub->parsing.cfg[i]) < 0)
 		{
 			ft_putstr_fd(MSG_ERR_WRONG_ID, 2);
-			exit(-1);
+			custom_exit(cub, EXIT_FAILURE);
 		}
 		i++;
 	}

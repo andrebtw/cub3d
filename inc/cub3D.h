@@ -128,8 +128,8 @@ int		parse_cfg(t_cub *cub);
 void	get_textures(char *dir, char *cfg, t_cub *cub);
 int 	get_colors(char *side, char *cfg, t_cub *cub);
 int		file_exists_check(char *file);
-int		get_cfg(t_cub *cub);
-int		get_map(t_cub *cub, int	i);
+void	get_cfg(t_cub *cub);
+void	get_map(t_cub *cub, int	i);
 
 /* --- MAP PARSING --- */
 int		parsing_map(t_cub *cub);

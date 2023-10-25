@@ -62,11 +62,6 @@ int	parsing(t_cub *cub, int argc, char **argv)
 	cub->parsing.file_path = argv[1];
 	if (parsing_file(cub))
 		return (EXIT_FAILURE);
-	if (get_cfg(cub))
-	{
-		ft_putstr_fd(MSG_ERR_MALLOC, STDERR_FILENO);
-		return (K_ERR_MALLOC);
-	}
 	if (parsing_map(cub))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);

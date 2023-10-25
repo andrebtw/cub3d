@@ -15,24 +15,23 @@
 int		tablen(char **tab);
 void	check_arg_nmb_by_line(t_cub *cub);
 
-int	get_cfg(t_cub *cub)
+void	get_cfg(t_cub *cub)
 {
 	int	i;
 	int	count;
 
 	i = 0;
 	count = 0;
-	cub->parsing.cfg = malloc(7 * sizeof(char **));
+	cub->parsing.cfg = (char **) malloc(7 * sizeof(char **));
 	if (!cub->parsing.cfg)
-		return (ft_free_tab(cub->parsing.file), K_ERR_MALLOC);
+		custom_exit(cub, K_ERR_MALLOC);
 	while (cub->parsing.file[i] && count < 6)
 	{
 		if (cub->parsing.file[i][0] != '\n')
 		{
 			cub->parsing.cfg[count] = ft_strdup(cub->parsing.file[i]);
 			if (!cub->parsing.cfg[count])
-				return (ft_free_tab(cub->parsing.cfg), ft_free_tab(\
-				cub->parsing.file), K_ERR_MALLOC);
+				custom_exit(cub, K_ERR_MALLOC);
 			count++;
 		}
 		i++;
@@ -40,12 +39,9 @@ int	get_cfg(t_cub *cub)
 	cub->parsing.cfg[count++] = NULL;
 	check_arg_nmb_by_line(cub);
 	get_map(cub, i);
-	if (get_map(cub, i))
-		return (K_ERR_MALLOC);
-	return (EXIT_SUCCESS);
 }
 
-int	get_map(t_cub *cub, int i)
+void	get_map(t_cub *cub, int i)
 {
 	size_t		len;
 	int			j;
@@ -54,21 +50,18 @@ int	get_map(t_cub *cub, int i)
 	len = 0;
 	while (cub->parsing.file[len])
 		len++;
-	cub->parsing.map = malloc((len - i + 1) * sizeof(char **));
+	cub->parsing.map = (char **) malloc((len - i + 1) * sizeof(char **));
 	if (!cub->parsing.map)
-		return (ft_free_tab(cub->parsing.cfg), ft_free_tab(\
-		cub->parsing.file), K_ERR_MALLOC);
+		custom_exit(cub, K_ERR_MALLOC);
 	while (cub->parsing.file[i])
 	{
 		cub->parsing.map[j] = ft_strdup(cub->parsing.file[i]);
 		if (!cub->parsing.map[j])
-			return (ft_free_tab(cub->parsing.cfg), ft_free_tab(\
-			cub->parsing.map), ft_free_tab(cub->parsing.file), K_ERR_MALLOC);
+			custom_exit(cub, K_ERR_MALLOC);
 		i++;
 		j++;
 	}
 	cub->parsing.map[j] = NULL;
-	return (EXIT_SUCCESS);
 }
 
 void	check_arg_nmb_by_line(t_cub *cub)
@@ -84,14 +77,15 @@ void	check_arg_nmb_by_line(t_cub *cub)
 		{
 			ft_putstr_fd(MSG_ERR_WRONG_ID, 2);
 			ft_free_tab(splited_line);
-			exit (1);
+			custom_exit(cub, EXIT_FAILURE);
 		}
 		if (tablen(splited_line) != 2)
 		{
 			ft_putstr_fd(MSG_ERR_CFG, 2);
 			ft_free_tab(splited_line);
-			exit(1);
+			custom_exit(cub, EXIT_FAILURE);
 		}
+		ft_free_tab(splited_line);
 	}
 }
 
