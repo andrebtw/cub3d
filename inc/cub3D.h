@@ -30,8 +30,8 @@
 # define FALSE 0
 
 /* --- WINDOW CONSTANTS --- */
-# define RES_WIDTH 1280
-# define RES_HEIGHT 720
+# define RES_WIDTH 1920
+# define RES_HEIGHT 1080
 # define WIN_TITLE "Cub3D"
 
 /* --- COLORS --- */
@@ -117,6 +117,16 @@ typedef struct s_cub
 	t_parsing	parsing;
 	t_mlx		mlx;
 }	t_cub;
+
+/* --- MLX --- */
+
+typedef struct	s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
 
 /* --- MAIN FUNCTIONS --- */
 void	custom_exit(t_cub *cub, int exit_code);

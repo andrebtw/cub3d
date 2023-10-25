@@ -12,8 +12,19 @@
 
 #include "cub3D.h"
 
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+
 int	mlx_create_window(t_cub *cub)
 {
+	t_img	img;
+
 	cub->mlx.ptr = mlx_init();
 	if (!cub->mlx.ptr)
 	{
@@ -26,6 +37,11 @@ int	mlx_create_window(t_cub *cub)
 		ft_putstr_fd(MSG_ERR_CREATE_WIN, STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
+	img.img = mlx_new_image(cub->mlx.ptr, RES_WIDTH, RES_HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								 &img.endian);
+	my_mlx_pixel_put(&img, 50, 50, 0x00FF0000);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, img.img, 0, 0);
 	return (EXIT_SUCCESS);
 }
 
