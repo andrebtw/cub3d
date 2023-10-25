@@ -61,23 +61,24 @@ int	get_colors(char *side, char *cfg, t_cub *cub)
 	while (ft_isspace(*cfg))
 		cfg++;
 	splited_colors = ft_split(cfg, ',');
+	if (!splited_colors)
+		custom_exit(cub, K_ERR_MALLOC);
 	while (++i < 3)
 	{
 		nmb = ft_atoi(splited_colors[i]);
 		if (!ft_isnmb(splited_colors[i]) || nmb > 255 || nmb < 0)
 		{
 			ft_putstr_fd(MSG_ERR_COLOUR, 2);
-			exit(1);
+			ft_free_tab(splited_colors);
+			custom_exit(cub, EXIT_FAILURE);
 		}
 		if (!ft_strncmp(side, "F", 1))
 			cub->parsing.floor_color_rgb[i] = nmb;
 		else if (!ft_strncmp(side, "C", 1))
 			cub->parsing.ceiling_color_rgb[i] = nmb;
 	}
-	i = -1;
-	while (++i < 3)
-		free(splited_colors[i]);
-	return (free(splited_colors), 0);
+	ft_free_tab(splited_colors);
+	return (0);
 }
 
 int	ft_isnmb(char *str)
