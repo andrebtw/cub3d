@@ -19,6 +19,7 @@
 # include <stdint.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 /* --- HEADER FILES --- */
 # include "libft.h"
@@ -53,7 +54,17 @@
 # define MSG_ERR_MULTIPLE_ARGS "Multiple arguments were entered. \x1B[0m\n\x1B[33mPlease\
  make sure to enter the map path as an argument only.\n\x1B[0m"
 # define MSG_ERR_FILE_MAP_NOT_FOUND "File was not found. \x1B[0m\n\x1B[33mPlease\
- make sure to enter the right map file path.\n\x1B[0m"
+Make sure to enter the right map file path.\n\x1B[0m"
+ # define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
+ Make sure the right file permissions are set.\n\x1B[0m"
+# define MSG_ERR_WRONG_ID "Error \x1B[0m\n\x1B[33m\
+There's a wrong identifier in the configuration file.\n\x1B[0m"
+# define MSG_ERR_CFG "Error \x1B[0m\n\x1B[33m\
+There's too much information on a line of your configuration file.\n\x1B[0m"
+# define MSG_ERR_COLOUR "Error \x1B[0m\n\x1B[33m\
+An RGB value is incorrect, be sure to input 3 values each between 0 and 255.\n\x1B[0m"
+# define MSG_ERR_TEXTURE_FILE "Error \x1B[0m\n\x1B[33m\
+A texture file can't be opened.\n\x1B[0m"make sure to enter the right map file path.\n\x1B[0m"
 # define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
  make sure the right file permissions are set.\n\x1B[0m"
 # define MSG_ERR_WRONG_EXT "A non .cub file was entered. \x1B[0m\n\x1B[33mPlease\
@@ -98,6 +109,12 @@ void	custom_exit(t_cub *cub, int exit_code);
 /* --- PARSING --- */
 int		parsing(t_cub *cub, int argc, char **argv);
 int		parsing_file(t_cub *cub);
+void	get_cfg(t_cub *cub);
+void	get_map(t_cub *cub, int	i);
+int		parse_cfg(t_cub *cub);
+char	*get_textures(char *dir, char *cfg, t_cub *cub);
+int 	get_colors(char *side, char *cfg, t_cub *cub);
+int		file_exists_check(char *file);
 int		get_cfg(t_cub *cub);
 int		get_map(t_cub *cub, int	i);
 

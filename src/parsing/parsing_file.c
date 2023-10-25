@@ -99,5 +99,7 @@ int	parsing_file(t_cub *cub)
 	return_code = write_map_file(cub);
 	if (return_code)
 		return (exit(return_code), EXIT_FAILURE);
+	get_cfg(cub);
+	parse_cfg(cub);
 	return (EXIT_SUCCESS);
 }
