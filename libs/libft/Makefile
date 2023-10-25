@@ -77,7 +77,8 @@ SRCS = 	ft_atoi.c \
 		ft_putstr_fd_printf.c \
 		ft_sizeof_nb_base.c \
 		ft_strlen_printf.c \
-		ft_free.c
+		ft_free.c \
+		ft_isextension.c 
 
 OBJS = $(SRCS:.c=.o)
 HEADER = libft.h
