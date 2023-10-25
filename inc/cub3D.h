@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/24 16:09:29 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:29:27 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@
 /* --- BOOLEAN --- */
 # define TRUE 1
 # define FALSE 0
+
+/* --- WINDOW CONSTANTS --- */
+# define RES_WIDTH 1280
+# define RES_HEIGHT 720
+# define WIN_TITLE "Cub3D"
 
 /* --- COLORS --- */
 # define K_NORMAL "\x1B[0m"
@@ -79,6 +84,10 @@ A texture file can't be opened, make sure to enter the right map file path.\n\x1
  make sure to have an empty line between the configuration part and the map.\n\x1B[0m"
 # define MSG_ERR_MULTIPLE_SPAWNS "Multiple spawn locations were found. \x1B[0m\n\x1B[33mPlease\
  make sure to only enter one spawn location.\n\x1B[0m"
+# define MSG_ERR_MLX_INIT "Mlx initialisation has failed. \x1B[0m\n\x1B[33mPlease\
+ make sure it is correctly installed.\n\x1B[0m"
+# define MSG_ERR_CREATE_WIN "Window creation has failed. \x1B[0m\n\x1B[33mPlease\
+ make sure all drivers are correctly installed.\n\x1B[0m"
 
 /* --- STRUCTS --- */
 typedef struct s_parsing
@@ -97,9 +106,16 @@ typedef struct s_parsing
 	char	**file;
 }	t_parsing;
 
+typedef struct s_mlx
+{
+	void	*ptr;
+	void	*win;
+}	t_mlx;
+
 typedef struct s_cub
 {
 	t_parsing	parsing;
+	t_mlx		mlx;
 }	t_cub;
 
 /* --- MAIN FUNCTIONS --- */
@@ -119,5 +135,9 @@ int		get_map(t_cub *cub, int	i);
 int		parsing_map(t_cub *cub);
 int		parsing_map_loop(t_cub *cub);
 # define POSSIBLE_CHARS "01NSEW \n"
+
+/* --- MLX --- */
+int		mlx_main(t_cub *cub);
+
 
 #endif

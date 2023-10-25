@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 22:03:15 by anrodri2          #+#    #+#              #
-#    Updated: 2023/10/24 14:46:25 by anrodri2         ###   ########.fr        #
+#    Updated: 2023/10/25 18:04:20 by anrodri2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRCS =	main.c \
 		parsing/cfg_parsing/check_cfg.c \
 		parsing/cfg_parsing/parse_cfg.c \
 		parsing/map/parsing_map_main.c \
-		parsing/map/parsing_map_loop.c 
+		parsing/map/parsing_map_loop.c \
+		mlx/mlx_main.c 
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

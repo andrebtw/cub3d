@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:22 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/24 14:52:23 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/10/25 18:04:42 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ int	main(int argc, char **argv)
 
 	i = -1;
 	ret_code = parsing(&cub, argc, argv);
+	if (ret_code)
+		return (ret_code);
+	ret_code = mlx_main(&cub);
 	if (ret_code)
 		return (ret_code);
 	custom_exit(&cub, EXIT_SUCCESS);
