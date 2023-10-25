@@ -64,9 +64,7 @@ There's too much information on a line of your configuration file.\n\x1B[0m"
 # define MSG_ERR_COLOUR "Error \x1B[0m\n\x1B[33m\
 An RGB value is incorrect, be sure to input 3 values each between 0 and 255.\n\x1B[0m"
 # define MSG_ERR_TEXTURE_FILE "Error \x1B[0m\n\x1B[33m\
-A texture file can't be opened.\n\x1B[0m"make sure to enter the right map file path.\n\x1B[0m"
-# define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
- make sure the right file permissions are set.\n\x1B[0m"
+A texture file can't be opened, make sure to enter the right map file path.\n\x1B[0m"
 # define MSG_ERR_WRONG_EXT "A non .cub file was entered. \x1B[0m\n\x1B[33mPlease\
  make sure to only enter .cub files.\n\x1B[0m"
 # define MSG_ERR_ILLEGAL_CHARS_MAP "Illegal characters were found in the map file. \x1B[0m\n\x1B[33mPlease\
@@ -109,8 +107,6 @@ void	custom_exit(t_cub *cub, int exit_code);
 /* --- PARSING --- */
 int		parsing(t_cub *cub, int argc, char **argv);
 int		parsing_file(t_cub *cub);
-void	get_cfg(t_cub *cub);
-void	get_map(t_cub *cub, int	i);
 int		parse_cfg(t_cub *cub);
 char	*get_textures(char *dir, char *cfg, t_cub *cub);
 int 	get_colors(char *side, char *cfg, t_cub *cub);

@@ -17,6 +17,7 @@ int	ft_isnmb(char *str);
 char	*get_textures(char *dir, char *cfg, t_cub *cub)
 {
 	cfg++;
+	cfg[ft_strlen(cfg) - 1] = '\0';
 	while (ft_isspace(*cfg))
 		cfg++;
 	if (!ft_strcmp(dir, "NO"))

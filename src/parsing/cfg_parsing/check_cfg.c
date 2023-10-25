@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include <errno.h>
 
 int		check_cfg(t_cub *cub, char *str);
 void	check_texture_files(t_cub *cub);

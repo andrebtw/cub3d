@@ -12,10 +12,8 @@
 
 #include "cub3D.h"
 
-void	get_map(t_cub *cub, int i);
 int		tablen(char **tab);
 void	check_arg_nmb_by_line(t_cub *cub);
-int	get_map(t_cub *cub, int i);
 
 int	get_cfg(t_cub *cub)
 {
