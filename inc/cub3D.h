@@ -33,11 +33,13 @@
 # define RES_WIDTH 960
 # define RES_HEIGHT 540
 # define WIN_TITLE "Cub3D"
+# define ZOOM 15
 
 /* --- PIXEL COLORS --- */
-#define WHITE 0xFFFFFF
-#define BROWN 0x663300
-#define BLACK 0x000000
+# define WHITE 0xFFFFFF
+# define BROWN 0x663300
+# define BLACK 0x000000
+# define RED 0xCC0000
 
 /* --- COLORS --- */
 # define K_NORMAL "\x1B[0m"
@@ -154,7 +156,10 @@ int		parsing_map_loop(t_cub *cub);
 /* --- MLX --- */
 int		mlx_main(t_cub *cub);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+/* --- DISPLAY --- */
 void    print_map(t_cub *cub, t_img *img);
+void    find_player(t_cub *cub, t_img *img);
 
 
 #endif

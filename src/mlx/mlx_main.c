@@ -41,7 +41,8 @@ int	mlx_create_window(t_cub *cub)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								 &img.endian);
     print_map(cub, &img);
-	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, img.img, 0, 0);
+    find_player(cub, &img);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, img.img, RES_WIDTH / 4, RES_HEIGHT / 4);
 	return (EXIT_SUCCESS);
 }
 
