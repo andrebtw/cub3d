@@ -37,6 +37,11 @@ int	mlx_create_window(t_cub *cub)
 		ft_putstr_fd(MSG_ERR_CREATE_WIN, STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
+	img.img = mlx_new_image(cub->mlx.ptr, RES_WIDTH, RES_HEIGHT);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+								 &img.endian);
+    print_map(cub, &img);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, img.img, 0, 0);
 	return (EXIT_SUCCESS);
 }
 
