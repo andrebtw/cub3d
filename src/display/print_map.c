@@ -14,7 +14,7 @@
 
 void    print_pixel(t_img *img, int color, int x, int y);
 
-void print_map(t_cub *cub, t_img *img)
+void print_map(t_cub *cub)
 {
     int i;
     int j;
@@ -26,13 +26,13 @@ void print_map(t_cub *cub, t_img *img)
         while (cub->parsing.map[i][++j])
         {
             if (cub->parsing.map[i][j] == '1')
-                print_pixel(img, BROWN, j, i);
+                print_pixel(&cub->img, BROWN, j, i);
             else if (cub->parsing.map[i][j] == '0' || cub->parsing.map[i][j] == 'N'
                 || cub->parsing.map[i][j] == 'E' || cub->parsing.map[i][j] == 'W'
                 || cub->parsing.map[i][j] == 'S')
-                print_pixel(img, WHITE, j, i);
+                print_pixel(&cub->img, WHITE, j, i);
             else
-                print_pixel(img, BLACK, j, i);
+                print_pixel(&cub->img, BLACK, j, i);
         }
     }
 }

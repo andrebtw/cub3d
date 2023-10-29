@@ -38,6 +38,7 @@ SRCS =	main.c \
 		parsing/map/parsing_map_main.c \
 		parsing/map/parsing_map_loop.c \
 		mlx/mlx_main.c \
+		mlx/mlx_hooks.c \
 		display/print_map.c \
 		display/player.c
 
