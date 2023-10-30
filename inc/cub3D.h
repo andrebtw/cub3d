@@ -33,6 +33,24 @@
 # define RES_WIDTH 960
 # define RES_HEIGHT 540
 # define WIN_TITLE "Cub3D"
+# define ZOOM 20
+# define PLAYER_SIZE 11
+
+/* --- PIXEL COLORS --- */
+# define WHITE 0xFFFFFF
+# define BROWN 0x663300
+# define BLACK 0x000000
+# define RED 0xCC0000
+
+/* --- MLX EVENTS --- */
+# define KEYPRESS 02
+
+/* --- KEY CODES --- */
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
 
 /* --- COLORS --- */
 # define K_NORMAL "\x1B[0m"
@@ -112,21 +130,31 @@ typedef struct s_mlx
 	void	*win;
 }	t_mlx;
 
-typedef struct s_cub
+typedef struct	s_img
 {
-	t_parsing	parsing;
-	t_mlx		mlx;
-}	t_cub;
-
-/* --- MLX --- */
-
-typedef struct	s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 }				t_img;
+
+typedef struct s_player
+{
+	int		x;
+	int 	y;
+	char	side;
+	int 	horizontal;
+	int 	vertical;
+}				t_player;
+
+typedef struct s_cub
+{
+    t_parsing	parsing;
+    t_mlx		mlx;
+    t_img       img;
+	t_player	player;
+}	t_cub;
 
 /* --- MAIN FUNCTIONS --- */
 void	custom_exit(t_cub *cub, int exit_code);
@@ -148,6 +176,13 @@ int		parsing_map_loop(t_cub *cub);
 
 /* --- MLX --- */
 int		mlx_main(t_cub *cub);
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int     mlx_hooks(t_cub *cub);
+
+/* --- DISPLAY --- */
+int		print_map(t_cub *cub);
+void	find_player(t_cub *cub);
+void	move_player(t_cub *cub);
 
 
 #endif

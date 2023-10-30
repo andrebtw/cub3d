@@ -21,5 +21,9 @@ void	custom_exit(t_cub *cub, int exit_code)
 	free(cub->parsing.so_path);
 	free(cub->parsing.we_path);
 	free(cub->parsing.ea_path);
+    mlx_destroy_image(cub->mlx.ptr, cub->img.img);
+    mlx_destroy_window(cub->mlx.ptr, cub->mlx.win);
+    mlx_destroy_display(cub->mlx.ptr);
+    free(cub->mlx.ptr);
 	exit(exit_code);
 }
