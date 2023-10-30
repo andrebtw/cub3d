@@ -40,7 +40,7 @@ int	mlx_create_window(t_cub *cub)
 	img.img = mlx_new_image(cub->mlx.ptr, RES_WIDTH, RES_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								 &img.endian);
-	my_mlx_pixel_put(&img, 50, 50, 0x00FF0000);
+	my_mlx_pixel_put(&img, 975, 540, 0x00FF0000);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, img.img, 0, 0);
 	return (EXIT_SUCCESS);
 }
