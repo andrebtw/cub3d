@@ -33,8 +33,13 @@
 # define RES_WIDTH 960
 # define RES_HEIGHT 540
 # define WIN_TITLE "Cub3D"
+
+/* --- DISPLAY CONSTANTS --- */
 # define ZOOM 20
 # define PLAYER_SIZE 11
+# define WALLS_SIZE 64
+# define FOV 60
+# define PLAYER_HEIGHT (WALLS_SIZE / 2)
 
 /* --- PIXEL COLORS --- */
 # define WHITE 0xFFFFFF
@@ -143,10 +148,18 @@ typedef struct s_player
 {
 	int		x;
 	int 	y;
-	char	side;
+	int 	dir;
+	char 	side;
 	int 	horizontal;
 	int 	vertical;
 }				t_player;
+
+typedef struct s_vect
+{
+	int x;
+	int y;
+	int dir;
+};
 
 typedef struct s_cub
 {
