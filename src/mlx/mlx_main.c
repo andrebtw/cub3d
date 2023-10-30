@@ -12,6 +12,8 @@
 
 #include "cub3D.h"
 
+int	update_map(t_cub *cub);
+
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;
@@ -52,6 +54,15 @@ int	mlx_main(t_cub *cub)
 	if (ret_value)
 		return (ret_value);
     mlx_hooks(cub);
+	mlx_loop_hook(cub->mlx.ptr, update_map, cub);
 	mlx_loop(cub->mlx.ptr);
 	return (EXIT_SUCCESS);
+}
+
+int	update_map(t_cub *cub)
+{
+	print_map(cub);
+	move_player(cub);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, RES_WIDTH / 4, RES_HEIGHT / 4);
+	return (0);
 }

@@ -14,7 +14,7 @@
 
 void    print_pixel(t_img *img, int color, int x, int y);
 
-void print_map(t_cub *cub)
+int print_map(t_cub *cub)
 {
     int i;
     int j;
@@ -35,6 +35,7 @@ void print_map(t_cub *cub)
                 print_pixel(&cub->img, BLACK, j, i);
         }
     }
+	return (0);
 }
 
 void    print_pixel(t_img *img, int color, int x, int y)
