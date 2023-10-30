@@ -37,7 +37,8 @@ SRCS =	main.c \
 		parsing/cfg_parsing/parse_cfg.c \
 		parsing/map/parsing_map_main.c \
 		parsing/map/parsing_map_loop.c \
-		mlx/mlx_main.c 
+		mlx/mlx_main.c \
+		mlx/print_map.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
