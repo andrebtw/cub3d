@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:27:58 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/10/28 16:28:36 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:22:41 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void    print_pixel(t_img *img, int color, int x, int y)
         col_count = 0;
         while (col_count <= ZOOM)
         {
-            my_mlx_pixel_put(img, x + col_count, y + line_count, color);
-            col_count++;
-        }
-        line_count++;
-    }
+			my_mlx_pixel_put(img, x + col_count, y + line_count, color);
+			col_count++;
+		}
+		line_count++;
+	}
 }
