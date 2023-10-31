@@ -43,6 +43,7 @@ int	mlx_create_window(t_cub *cub)
     print_map(cub);
     find_player(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, RES_WIDTH / 4, RES_HEIGHT / 4);
+	ray_casting_main(cub);
 	return (EXIT_SUCCESS);
 }
 

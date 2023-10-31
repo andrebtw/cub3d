@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <math.h>
 
 /* --- HEADER FILES --- */
 # include "libft.h"
@@ -35,11 +36,11 @@
 # define WIN_TITLE "Cub3D"
 
 /* --- DISPLAY CONSTANTS --- */
-# define ZOOM 20
-# define PLAYER_SIZE 11
-# define WALLS_SIZE 64
-# define FOV 60
-# define PLAYER_HEIGHT (WALLS_SIZE / 2)
+# define ZOOM 20.0
+# define PLAYER_SIZE 11.0
+# define WALLS_SIZE 64.0
+# define FOV 60.0
+# define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
 
 /* --- PIXEL COLORS --- */
 # define WHITE 0xFFFFFF
@@ -127,13 +128,13 @@ typedef struct s_parsing
 	char	**map;
 	char 	**cfg;
 	char	**file;
-}	t_parsing;
+}			t_parsing;
 
 typedef struct s_mlx
 {
 	void	*ptr;
 	void	*win;
-}	t_mlx;
+}			t_mlx;
 
 typedef struct	s_img
 {
@@ -142,24 +143,38 @@ typedef struct	s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-}				t_img;
+}			t_img;
 
 typedef struct s_player
 {
-	int		x;
-	int 	y;
-	int 	dir;
+	double	x;
+	double 	y;
+	double	new_x;
+	double	new_y;
+	double 	dir;
 	char 	side;
 	int 	horizontal;
 	int 	vertical;
-}				t_player;
+}			t_player;
+
+typedef struct s_point
+{
+	double x;
+	double y;
+}	t_point;
 
 typedef struct s_vect
 {
-	int x;
-	int y;
-	int dir;
-};
+	t_point	point;
+	double	dir;
+}	t_vect;
+
+typedef struct s_ray
+{
+	double	p_p_dist;
+	double	angle_btw_ray;
+	t_point	p_p_center;
+}		t_ray;
 
 typedef struct s_cub
 {
@@ -167,7 +182,8 @@ typedef struct s_cub
     t_mlx		mlx;
     t_img       img;
 	t_player	player;
-}	t_cub;
+	t_ray		ray;
+}				t_cub;
 
 /* --- MAIN FUNCTIONS --- */
 void	custom_exit(t_cub *cub, int exit_code);
@@ -196,6 +212,13 @@ int     mlx_hooks(t_cub *cub);
 int		print_map(t_cub *cub);
 void	find_player(t_cub *cub);
 void	move_player(t_cub *cub);
+
+/* --- RAY CASTING --- */
+int		ray_casting_main(t_cub *cub);
+void	init_ray_cast(t_cub *cub);
+
+/* --- TOOLS --- */
+double	to_radians(double angle);
 
 
 #endif

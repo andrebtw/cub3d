@@ -14,6 +14,7 @@
 
 void    print_player(t_cub *cub);
 void	init_player(t_cub *cub);
+void	find_angle(t_cub *cub);
 
 void    find_player(t_cub *cub)
 {
@@ -33,6 +34,7 @@ void    find_player(t_cub *cub)
 				cub->player.x = j;
 				cub->player.y = i;
 				cub->player.side = cub->parsing.map[i][j];
+				find_angle(cub);
 				print_player(cub);
 			}
         }
@@ -47,14 +49,14 @@ void    print_player(t_cub *cub)
 
     line_count = 0;
     count = 0;
-    cub->player.x += cub->player.x * ZOOM;
-    cub->player.y += cub->player.y * ZOOM;
+    cub->player.new_x = cub->player.x + cub->player.x * ZOOM;
+    cub->player.new_y = cub->player.y + cub->player.y * ZOOM;
     while (line_count <= PLAYER_SIZE)
     {
         col_count = 0;
         while (col_count <= PLAYER_SIZE - (count * 2))
         {
-            my_mlx_pixel_put(&cub->img, cub->player.x + col_count + count, cub->player.y - line_count, RED);
+            my_mlx_pixel_put(&cub->img, cub->player.new_x + col_count + count, cub->player.new_y - line_count, RED);
             col_count++;
         }
         line_count++;
@@ -75,12 +77,24 @@ void	move_player(t_cub *cub)
 		col_count = 0;
 		while (col_count <= PLAYER_SIZE - (count * 2))
 		{
-			my_mlx_pixel_put(&cub->img, cub->player.x + cub->player.horizontal + col_count + count, cub->player.y + cub->player.vertical - line_count, RED);
+			my_mlx_pixel_put(&cub->img, cub->player.new_x + cub->player.horizontal + col_count + count, cub->player.new_y + cub->player.vertical - line_count, RED);
 			col_count++;
 		}
 		line_count++;
 		count++;
 	}
+}
+
+void	find_angle(t_cub *cub)
+{
+	if (cub->player.side == 'N')
+		cub->player.dir = 90;
+	else if (cub->player.side == 'S')
+		cub->player.dir = 270;
+	else if (cub->player.side == 'E')
+		cub->player.dir = 360;
+	else
+		cub->player.dir = 180;
 }
 
 void	init_player(t_cub *cub)
