@@ -17,7 +17,7 @@ int	check_if_out(t_cub *cub, size_t *y, size_t *x, size_t last_y)
 {
 	if (*y == last_y)
 		return (EXIT_FAILURE);
-	if (*y == 1)
+	if (*y == 0)
 		return (EXIT_FAILURE);
 	if (*x == 0)
 		return (EXIT_FAILURE);
@@ -76,7 +76,7 @@ int	parsing_map_loop(t_cub *cub)
 	size_t	x;
 	size_t	last_y;
 
-	y = 1;
+	y = 0;
 	last_y = map_size(cub);
 	if (check_zeros(cub, &y, &x, last_y))
 		return (EXIT_FAILURE);

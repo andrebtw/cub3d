@@ -1,0 +1,12 @@
+NO ./textures/NO
+SO ./textures/SO
+WE ./textures/EA
+EA ./textures/WE
+
+F 220,100,0
+C 225,30,0
+
+11111
+10001
+100N1
+11111

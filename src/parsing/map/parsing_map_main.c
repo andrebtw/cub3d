@@ -112,11 +112,11 @@ int	parsing_map(t_cub *cub)
 {
 	if (illegal_chars_check(cub))
 		return (EXIT_FAILURE);
-	if (cub->parsing.map[0][0] != '\n')
+	/*if (cub->parsing.map[0][0] != '\n')
 	{
 		ft_putstr_fd(MSG_ERR_NO_SEP_CFG_MAP, STDERR_FILENO);
 		return (EXIT_FAILURE);
-	}
+	}*/
 	if (empty_lines_check(cub))
 		return (EXIT_FAILURE);
 	if (parsing_map_loop(cub))

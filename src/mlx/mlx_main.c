@@ -42,7 +42,12 @@ int	mlx_create_window(t_cub *cub)
 								 &cub->img.endian);
     print_map(cub);
     find_player(cub);
-	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, RES_WIDTH / 4, RES_HEIGHT / 4);
+	mlx_destroy_image(cub->mlx.ptr, cub->img.img);
+	cub->img.img = mlx_new_image(cub->mlx.ptr, RES_WIDTH, RES_HEIGHT);
+	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
+									  &cub->img.endian);
+	ray_casting_main(cub);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
 	ray_casting_main(cub);
 	return (EXIT_SUCCESS);
 }

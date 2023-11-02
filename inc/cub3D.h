@@ -47,6 +47,8 @@
 # define BROWN 0x663300
 # define BLACK 0x000000
 # define RED 0xCC0000
+# define BLUE 0x66BFF
+# define GREEN 0x009900
 
 /* --- MLX EVENTS --- */
 # define KEYPRESS 02
@@ -173,6 +175,7 @@ typedef struct s_ray
 {
 	double	p_p_dist;
 	double	angle_btw_ray;
+	double	constant;
 	t_point	p_p_center;
 }		t_ray;
 
@@ -216,6 +219,8 @@ void	move_player(t_cub *cub);
 /* --- RAY CASTING --- */
 int		ray_casting_main(t_cub *cub);
 void	init_ray_cast(t_cub *cub);
+double	calc_wall_ditance(t_cub *cub, t_point inter, double ray);
+int		draw_walls(t_cub *cub, double wall_dist, int ray_nmb);
 
 /* --- TOOLS --- */
 double	to_radians(double angle);
