@@ -32,16 +32,18 @@ int cast_rays(t_cub *cub)
 	int		ray_nmb;
 
 	ray_angle = cub->player.dir - 30;
-	ray_nmb = -1;
-	while (++ray_nmb < RES_WIDTH)
+	ray_nmb = 0;
+	while (ray_nmb < RES_WIDTH)
 	{
 		wall_h = horizontal_intersections(cub, ray_angle);
 		wall_v = vertical_intersections(cub, ray_angle);
+		printf("WALL H : %f || WALL V : %f\n", wall_h, wall_v);
 		if (wall_h > wall_v)
 			draw_walls(cub, wall_v, ray_nmb);
 		else
 			draw_walls(cub, wall_h, ray_nmb);
 		ray_angle += cub->ray.angle_btw_ray;
+		ray_nmb++;
 	}
 	return (0);
 }
@@ -61,8 +63,8 @@ double horizontal_intersections(t_cub *cub, double ray_angle)
 		inter.y = floor(cub->player.y / WALLS_SIZE) * WALLS_SIZE + 64;
 		a.y = WALLS_SIZE;
 	}
-	a.x = floor(WALLS_SIZE / tan(to_radians(ray_angle)));
-	inter.x = floor(cub->player.x + (cub->player.y - inter.y) / tan(to_radians(ray_angle)));
+	a.x = WALLS_SIZE / tan(to_radians(ray_angle));
+	inter.x = cub->player.x + (cub->player.y - inter.y) / tan(to_radians(ray_angle));
 	while (check_wall(cub, inter) != 0)
 	{
 		inter.x += a.x;
@@ -87,7 +89,7 @@ double vertical_intersections(t_cub *cub, double ray_angle)
 		a.x = -WALLS_SIZE;
 	}
 	a.y = WALLS_SIZE * tan(to_radians(ray_angle));
-	inter.y = floor(cub->player.y + (cub->player.x - inter.x) * tan(to_radians(ray_angle)));
+	inter.y = cub->player.y + (cub->player.x - inter.x) * tan(to_radians(ray_angle));
 	if (inter.y < 0)
 		inter.y = 0;
 	while (check_wall(cub, inter) != 0)

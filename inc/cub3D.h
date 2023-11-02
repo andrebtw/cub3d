@@ -31,8 +31,8 @@
 # define FALSE 0
 
 /* --- WINDOW CONSTANTS --- */
-# define RES_WIDTH 960
-# define RES_HEIGHT 540
+# define RES_WIDTH 1920
+# define RES_HEIGHT 1080
 # define WIN_TITLE "Cub3D"
 
 /* --- DISPLAY CONSTANTS --- */
