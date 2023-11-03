@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/30 19:09:04 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:35:19 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 /* --- WINDOW CONSTANTS --- */
 # define RES_WIDTH 1280
 # define RES_HEIGHT 720
-# define MAP_WIDTH 100
-# define MAP_HEIGHT 100
+# define MAP_WIDTH 320
+# define MAP_HEIGHT 320
 # define WIN_TITLE "Cub3D"
 # define ZOOM 20
 # define PLAYER_SIZE 11
@@ -44,7 +44,7 @@
 # define BLACK 0x000000
 # define RED 0xCC0000
 # define GREEN 0x00FF00
-# define MAP_COLOUR 0x440177
+# define MAP_COLOUR 0x330155
 
 /* --- MLX EVENTS --- */
 # define KEYPRESS 02

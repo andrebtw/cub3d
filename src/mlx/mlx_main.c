@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:02:55 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/30 19:05:41 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/03 16:30:44 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	mlx_create_window(t_cub *cub)
 	// print_map(cub);
 	// find_player(cub);
 	// mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, RES_WIDTH / 4, RES_HEIGHT / 4);
-	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img_mapbg.img, 20, 10);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img_mapbg.img, 0, 0);
 	return (EXIT_SUCCESS);
 }
 
