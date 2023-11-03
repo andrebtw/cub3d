@@ -44,7 +44,6 @@ int	mlx_create_window(t_cub *cub)
     find_player(cub);
 	ray_casting_main(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
-	ray_casting_main(cub);
 	return (EXIT_SUCCESS);
 }
 
@@ -56,7 +55,7 @@ int	mlx_main(t_cub *cub)
 	if (ret_value)
 		return (ret_value);
     mlx_hooks(cub);
-	//mlx_loop_hook(cub->mlx.ptr, update_map, cub);
+	mlx_loop_hook(cub->mlx.ptr, move_player_3D, cub);
 	mlx_loop(cub->mlx.ptr);
 	return (EXIT_SUCCESS);
 }

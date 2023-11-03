@@ -31,8 +31,8 @@
 # define FALSE 0
 
 /* --- WINDOW CONSTANTS --- */
-# define RES_WIDTH 1920
-# define RES_HEIGHT 1080
+# define RES_WIDTH 960
+# define RES_HEIGHT 540
 # define WIN_TITLE "Cub3D"
 
 /* --- DISPLAY CONSTANTS --- */
@@ -41,6 +41,7 @@
 # define WALLS_SIZE 64.0
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
+# define SPEED 10.0;
 
 /* --- PIXEL COLORS --- */
 # define WHITE 0xFFFFFF
@@ -128,6 +129,8 @@ typedef struct s_parsing
 	int		floor_color_rgb[3];
 	int		ceiling_color_rgb[3];
 	char	**map;
+    int     map_max_x;
+    int     map_max_y;
 	char 	**cfg;
 	char	**file;
 }			t_parsing;
@@ -200,6 +203,7 @@ int 	get_colors(char *side, char *cfg, t_cub *cub);
 int		file_exists_check(char *file);
 void	get_cfg(t_cub *cub);
 void	get_map(t_cub *cub, int	i);
+void    map_max_len(t_cub *cub);
 
 /* --- MAP PARSING --- */
 int		parsing_map(t_cub *cub);
@@ -219,8 +223,9 @@ void	move_player(t_cub *cub);
 /* --- RAY CASTING --- */
 int		ray_casting_main(t_cub *cub);
 void	init_ray_cast(t_cub *cub);
-double	calc_wall_ditance(t_cub *cub, t_point inter, double ray);
+double	calc_wall_distance(t_cub *cub, t_point inter);
 int		draw_walls(t_cub *cub, double wall_dist, int ray_nmb);
+int     move_player_3D(t_cub *cub);
 
 /* --- TOOLS --- */
 double	to_radians(double angle);

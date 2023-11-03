@@ -41,10 +41,11 @@ SRCS =	main.c \
 		mlx/mlx_hooks.c \
 		display/print_map.c \
 		display/player.c \
-		display/ray_casting/tools.c \
 		display/ray_casting/init_ray_cast.c \
-		display/ray_casting/drawing_walls.c \
-		display/ray_casting/ray_casting_main.c
+		display/ray_casting/ray_casting_main.c \
+		display/ray_casting/tools.c \
+		display/ray_casting/move_player.c\
+		display/ray_casting/drawing_walls.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

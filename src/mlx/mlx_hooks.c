@@ -26,12 +26,12 @@ int keypress(int keycode, t_cub *cub)
 	if (keycode == ESC)
         custom_exit(cub, 0);
 	if (keycode == W)
-		cub->player.vertical -= 1;
+		cub->player.vertical = -1;
 	if (keycode == A)
-		cub->player.horizontal -= 1;
+		cub->player.horizontal = -1;
 	if (keycode == S)
-		cub->player.vertical += 1;
+		cub->player.vertical = 1;
 	if (keycode == D)
-		cub->player.horizontal += 1;
+		cub->player.horizontal = 1;
     return (0);
 }

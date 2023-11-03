@@ -123,5 +123,6 @@ int	parsing_map(t_cub *cub)
 		return (EXIT_FAILURE);
 	if (spawn_location_check(cub))
 		return (EXIT_FAILURE);
+    map_max_len(cub);
 	return (EXIT_SUCCESS);
 }

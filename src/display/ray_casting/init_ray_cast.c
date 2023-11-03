@@ -15,7 +15,7 @@
 void	init_ray_cast(t_cub *cub)
 {
 	cub->ray.p_p_dist = (RES_WIDTH / 2.0) / tan(to_radians(FOV / 2));
-	cub->ray.angle_btw_ray = 60.0 / RES_WIDTH;
+	cub->ray.angle_btw_ray = FOV / RES_WIDTH;
 	cub->ray.constant = WALLS_SIZE * cub->ray.p_p_dist;
 	cub->ray.p_p_center.x = RES_WIDTH / 2.0;
 	cub->ray.p_p_center.y = RES_HEIGHT / 2.0;

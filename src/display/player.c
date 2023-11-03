@@ -39,8 +39,8 @@ void    find_player(t_cub *cub)
 			}
         }
     }
-	cub->player.x *= WALLS_SIZE;
-	cub->player.y *= WALLS_SIZE;
+	cub->player.x = (cub->player.x * WALLS_SIZE) + (WALLS_SIZE / 2);
+	cub->player.y = (cub->player.y * WALLS_SIZE) + (WALLS_SIZE / 2);
 }
 
 void    print_player(t_cub *cub)
