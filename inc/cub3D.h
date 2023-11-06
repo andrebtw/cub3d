@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/03 16:35:19 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:20:44 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define WIN_TITLE "Cub3D"
 # define ZOOM 20
 # define PLAYER_SIZE 11
+# define MAP_OFFSET 20
 
 /* --- PIXEL COLORS --- */
 # define WHITE 0xFFFFFF
@@ -156,6 +157,7 @@ typedef struct s_cub
 {
     t_parsing	parsing;
     t_mlx		mlx;
+	int			map_ratio;
     t_img       img;
 	t_img		img_mapbg;
 	t_player	player;

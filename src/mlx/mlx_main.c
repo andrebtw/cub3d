@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:02:55 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/03 16:30:44 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:44:41 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ int	mlx_create_window(t_cub *cub)
 		return (EXIT_FAILURE);
 	}
 	cub->img.img = mlx_new_image(cub->mlx.ptr, RES_WIDTH, RES_HEIGHT);
-	cub->img_mapbg.img = mlx_new_image(cub->mlx.ptr, MAP_WIDTH, MAP_HEIGHT);
+	// cub->img_mapbg.img = mlx_new_image(cub->mlx.ptr, MAP_WIDTH, MAP_HEIGHT);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
 								 &cub->img.endian);
-	cub->img_mapbg.addr = mlx_get_data_addr(cub->img_mapbg.img, &cub->img_mapbg.bits_per_pixel, &cub->img_mapbg.line_length,
-								 &cub->img_mapbg.endian);
+	// cub->img_mapbg.addr = mlx_get_data_addr(cub->img_mapbg.img, &cub->img_mapbg.bits_per_pixel, &cub->img_mapbg.line_length,
+								//  &cub->img_mapbg.endian);
 	print_mapbg(cub);
-	// print_map(cub);
+	print_map(cub);
 	// find_player(cub);
-	// mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, RES_WIDTH / 4, RES_HEIGHT / 4);
-	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img_mapbg.img, 0, 0);
+	// mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img_mapbg.img, 0, 0);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
 	return (EXIT_SUCCESS);
 }
 

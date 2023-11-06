@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:45:18 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/03 16:50:22 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:20:01 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	print_mapbg(t_cub *cub)
 	rect.colour = MAP_COLOUR;
 	rect.border_color = 0xFFFFFF;
 	rect.is_borderless = FALSE;
-	print_rect(&(cub->img_mapbg), &rect);
+	print_rect(&(cub->img), &rect);
 }
