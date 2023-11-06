@@ -38,6 +38,8 @@
 # define ZOOM 20
 # define PLAYER_SIZE 11
 # define MAP_OFFSET 20
+# define MAP_LIMIT_X 160
+# define MAP_LIMIT_Y 160
 
 /* --- PIXEL COLORS --- */
 # define WHITE 0xFFFFFF

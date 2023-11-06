@@ -16,8 +16,8 @@ void	print_mapbg(t_cub *cub)
 {
 	t_rect	rect;
 
-	rect.x = 20;
-	rect.y = 20;
+	rect.x = 2;
+	rect.y = 2;
 	rect.width = MAP_WIDTH / 2;
 	rect.height = MAP_HEIGHT / 2;
 	rect.colour = MAP_COLOUR;

@@ -27,9 +27,9 @@ void    get_ratio(t_cub *cub)
 			biggest_x = (int)ft_strlen(cub->parsing.map[y]);
     }
 	if (y > biggest_x)
-		cub->map_ratio = ZOOM * ;
+		cub->map_ratio = (MAP_WIDTH / 2) / (y + 5);
 	else
-		cub->map_ratio = ZOOM * ;
+		cub->map_ratio = (MAP_WIDTH / 2) / (biggest_x + 5);
 }
 
 int print_map(t_cub *cub)
@@ -50,8 +50,6 @@ int print_map(t_cub *cub)
                 || cub->parsing.map[i][j] == 'E' || cub->parsing.map[i][j] == 'W'
                 || cub->parsing.map[i][j] == 'S')
                 print_pixel(cub, WHITE, j, i);
-            // else
-                // print_pixel(&cub->img, BLACK, j, i);
         }
     }
 	return (0);
@@ -70,7 +68,8 @@ void    print_pixel(t_cub *cub, int color, int x, int y)
         col_count = 0;
         while (col_count <= cub->map_ratio)
         {
-			my_mlx_pixel_put(&cub->img, x + col_count + 30, y + line_count + 50, color);
+			if (x + col_count + 10 <= MAP_LIMIT_X && y + line_count + 10 <= MAP_LIMIT_Y)
+				my_mlx_pixel_put(&cub->img, x + col_count + 10, y + line_count + 10, color);
 			col_count++;
 		}
 		line_count++;
