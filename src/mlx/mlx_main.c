@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
+/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:02:55 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/25 18:30:19 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:44:41 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_length + x * 4);
 	*(unsigned int*)dst = color;
 }
-
 
 int	mlx_create_window(t_cub *cub)
 {
@@ -40,9 +39,10 @@ int	mlx_create_window(t_cub *cub)
 	cub->img.img = mlx_new_image(cub->mlx.ptr, RES_WIDTH, RES_HEIGHT);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
 								 &cub->img.endian);
-    print_map(cub);
-    find_player(cub);
-	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, RES_WIDTH / 4, RES_HEIGHT / 4);
+	print_mapbg(cub);
+	print_map(cub);
+	find_player(cub);
+	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
 	return (EXIT_SUCCESS);
 }
 
@@ -54,7 +54,7 @@ int	mlx_main(t_cub *cub)
 	if (ret_value)
 		return (ret_value);
     mlx_hooks(cub);
-	mlx_loop_hook(cub->mlx.ptr, update_map, cub);
+	// mlx_loop_hook(cub->mlx.ptr, update_map, cub);
 	mlx_loop(cub->mlx.ptr);
 	return (EXIT_SUCCESS);
 }

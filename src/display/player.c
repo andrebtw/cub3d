@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 18:22:49 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/10/28 18:22:49 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/10/30 18:23:50 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 void    print_player(t_cub *cub);
-void	init_player(t_cub *cub);
+void    init_player(t_cub *cub);
 
 void    find_player(t_cub *cub)
 {
