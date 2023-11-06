@@ -166,7 +166,7 @@ typedef struct s_vect
 	int x;
 	int y;
 	int dir;
-};
+}	t_vect;
 
 typedef struct s_cub
 {
