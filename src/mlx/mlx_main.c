@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
+/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:02:55 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/25 18:30:19 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/03 17:44:41 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	dst = img->addr + (y * img->line_length + x * 4);
 	*(unsigned int*)dst = color;
 }
-
 
 int	mlx_create_window(t_cub *cub)
 {
@@ -42,6 +41,7 @@ int	mlx_create_window(t_cub *cub)
 								 &cub->img.endian);
     print_map(cub);
     find_player(cub);
+	print_mapbg(cub);
 	ray_casting_main(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
 	return (EXIT_SUCCESS);

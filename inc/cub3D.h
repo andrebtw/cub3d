@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
+/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/25 18:29:27 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/03 19:20:44 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@
 # define FALSE 0
 
 /* --- WINDOW CONSTANTS --- */
-# define RES_WIDTH 960
-# define RES_HEIGHT 540
+# define RES_WIDTH 1280
+# define RES_HEIGHT 720
+# define MAP_WIDTH 320
+# define MAP_HEIGHT 320
 # define WIN_TITLE "Cub3D"
 
 /* --- DISPLAY CONSTANTS --- */
@@ -42,6 +44,9 @@
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
 # define SPEED 10.0;
+# define MAP_OFFSET 20
+# define MAP_LIMIT_X 160
+# define MAP_LIMIT_Y 160
 
 /* --- PIXEL COLORS --- */
 # define WHITE 0xFFFFFF
@@ -49,7 +54,8 @@
 # define BLACK 0x000000
 # define RED 0xCC0000
 # define BLUE 0x66BFF
-# define GREEN 0x009900
+# define GREEN 0x00FF00
+# define MAP_COLOUR 0x330155
 
 /* --- MLX EVENTS --- */
 # define KEYPRESS 02
@@ -87,7 +93,7 @@
  make sure to enter the map path as an argument only.\n\x1B[0m"
 # define MSG_ERR_FILE_MAP_NOT_FOUND "File was not found. \x1B[0m\n\x1B[33mPlease\
 Make sure to enter the right map file path.\n\x1B[0m"
- # define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
+# define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
  Make sure the right file permissions are set.\n\x1B[0m"
 # define MSG_ERR_WRONG_ID "Error \x1B[0m\n\x1B[33m\
 There's a wrong identifier in the configuration file.\n\x1B[0m"
@@ -186,10 +192,24 @@ typedef struct s_cub
 {
     t_parsing	parsing;
     t_mlx		mlx;
+	int			map_ratio;
     t_img       img;
+	t_img		img_mapbg;
 	t_player	player;
 	t_ray		ray;
 }				t_cub;
+
+typedef struct s_rect
+{
+	int	x;
+	int	y;
+	int	width;
+	int	height;
+	int	colour;
+	int	is_borderless;
+	int	border_size;
+	int	border_color;
+}	t_rect;
 
 /* --- MAIN FUNCTIONS --- */
 void	custom_exit(t_cub *cub, int exit_code);
@@ -215,8 +235,12 @@ int		mlx_main(t_cub *cub);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int     mlx_hooks(t_cub *cub);
 
+/* --- SHAPES --- */
+void	print_rect(t_img *img, t_rect *rect);
+
 /* --- DISPLAY --- */
 int		print_map(t_cub *cub);
+void	print_mapbg(t_cub *cub);
 void	find_player(t_cub *cub);
 void	move_player(t_cub *cub);
 
