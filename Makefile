@@ -45,7 +45,7 @@ SRCS =	main.c \
 		display/ray_casting/ray_casting_main.c \
 		display/ray_casting/tools.c \
 		display/ray_casting/move_player.c\
-		display/ray_casting/drawing_walls.c
+		display/ray_casting/drawing_walls.c \
 		display/print_mapbg.c \
 		display/shapes/print_rect.c
 

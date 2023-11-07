@@ -39,9 +39,9 @@ int	mlx_create_window(t_cub *cub)
 	cub->img.img = mlx_new_image(cub->mlx.ptr, RES_WIDTH, RES_HEIGHT);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
 								 &cub->img.endian);
-    print_map(cub);
+    print_mapbg(cub);
+	print_map(cub);
     find_player(cub);
-	print_mapbg(cub);
 	ray_casting_main(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
 	return (EXIT_SUCCESS);

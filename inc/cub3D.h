@@ -59,6 +59,7 @@
 
 /* --- MLX EVENTS --- */
 # define KEYPRESS 02
+# define DESTROY_WINDOW 17
 
 /* --- KEY CODES --- */
 # define ESC 65307
