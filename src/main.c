@@ -22,6 +22,7 @@ void	values_init(t_cub *cub)
 	cub->parsing.map = NULL;
 	cub->parsing.cfg = NULL;
 	cub->parsing.file = NULL;
+	cub->player.rotating = 0;
 }
 
 int	main(int argc, char **argv)

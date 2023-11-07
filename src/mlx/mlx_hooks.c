@@ -25,25 +25,30 @@ int mlx_hooks(t_cub *cub)
 int	close_window(int keycode, t_cub *cub)
 {
 	(void)keycode;
-    mlx_destroy_window(cub->mlx.ptr, cub->mlx.win);
-    mlx_destroy_display(cub->mlx.ptr);
-    free(cub->mlx.ptr);
+	(void)cub;
+	// mlx_destroy_window(cub->mlx.ptr, cub->mlx.win);
+	// mlx_destroy_display(cub->mlx.ptr);
+	// free(cub->mlx.ptr);
 	exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
 
-int keypress(int keycode, t_cub *cub)
+int	keypress(int keycode, t_cub *cub)
 {
-    printf("KEY : %d\n", keycode);
+	// printf("KEY : %d\n", keycode);
 	if (keycode == ESC)
         custom_exit(cub, 0);
 	if (keycode == W)
-		cub->player.vertical = -1;
+		cub->player.vertical = 1;
 	if (keycode == A)
 		cub->player.horizontal = -1;
 	if (keycode == S)
-		cub->player.vertical = 1;
+		cub->player.vertical = -1;
 	if (keycode == D)
 		cub->player.horizontal = 1;
+	if (keycode == LEFT)
+		cub->player.rotating = 1;
+	if (keycode == RIGHT)
+		cub->player.rotating = -1;
     return (0);
 }

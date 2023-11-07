@@ -43,7 +43,10 @@
 # define WALLS_SIZE 64.0
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
-# define SPEED 10.0;
+# define SPEED_Y 10.0
+# define SPEED_X 3.5
+# define ROTATE_SENS 3
+# define SPEED_SPRINT 12.5
 # define MAP_OFFSET 20
 # define MAP_LIMIT_X 160
 # define MAP_LIMIT_Y 160
@@ -67,6 +70,10 @@
 # define A 97
 # define S 115
 # define D 100
+# define RIGHT 65363
+# define LEFT 65361
+# define UP 65362
+# define DOWN 65364
 
 /* --- COLORS --- */
 # define K_NORMAL "\x1B[0m"
@@ -167,6 +174,7 @@ typedef struct s_player
 	char 	side;
 	int 	horizontal;
 	int 	vertical;
+	int		rotating;
 }			t_player;
 
 typedef struct s_point
