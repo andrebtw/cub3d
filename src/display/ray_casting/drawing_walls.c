@@ -29,9 +29,9 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb)
 		//printf("PXL NMB : %d || RAY NMB : %d\n", pxl_nmb, ray_nmb);
 		//printf("WALL POS : %d\n", wall_pos);
 		if (pxl_nmb < wall_pos_up)
-			my_mlx_pixel_put(&cub->img,  RES_WIDTH - ray_nmb, pxl_nmb, BLUE);
+			my_mlx_pixel_put(&cub->img,  RES_WIDTH - ray_nmb, pxl_nmb, create_trgb(255, cub->parsing.ceiling_color_rgb[0],  cub->parsing.ceiling_color_rgb[1], cub->parsing.ceiling_color_rgb[2]));
 		else if (pxl_nmb > wall_pos_down)
-			my_mlx_pixel_put(&cub->img, RES_WIDTH - ray_nmb, pxl_nmb, GREEN);
+			my_mlx_pixel_put(&cub->img, RES_WIDTH - ray_nmb, pxl_nmb, create_trgb(255, cub->parsing.floor_color_rgb[0],  cub->parsing.floor_color_rgb[1], cub->parsing.floor_color_rgb[2]));
 		else
 			my_mlx_pixel_put(&cub->img, RES_WIDTH - ray_nmb, pxl_nmb, BROWN);
 	}

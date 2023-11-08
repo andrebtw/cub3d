@@ -262,6 +262,6 @@ int     move_player_3D(t_cub *cub);
 
 /* --- TOOLS --- */
 double	to_radians(double angle);
-
+int		create_trgb(int t, int r, int g, int b);
 
 #endif

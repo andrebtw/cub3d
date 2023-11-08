@@ -3,7 +3,7 @@ SO ./textures/SO
 WE ./textures/EA
 EA ./textures/WE
 
-F 220,100,0
+F 255,255,255
 C 225,30,0
 
           111111111111111111111111
