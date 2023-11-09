@@ -251,7 +251,6 @@ void	print_rect(t_img *img, t_rect *rect);
 int		print_map(t_cub *cub);
 void	print_mapbg(t_cub *cub);
 void	find_player(t_cub *cub);
-void	move_player(t_cub *cub);
 
 /* --- RAY CASTING --- */
 int		ray_casting_main(t_cub *cub);

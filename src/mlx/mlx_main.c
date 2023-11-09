@@ -63,7 +63,6 @@ int	mlx_main(t_cub *cub)
 int	update_map(t_cub *cub)
 {
 	print_map(cub);
-	move_player(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, RES_WIDTH / 4, RES_HEIGHT / 4);
 	return (0);
 }

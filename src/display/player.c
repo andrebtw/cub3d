@@ -35,56 +35,11 @@ void    find_player(t_cub *cub)
 				cub->player.y = i;
 				cub->player.side = cub->parsing.map[i][j];
 				find_angle(cub);
-				print_player(cub);
 			}
         }
     }
 	cub->player.x = (cub->player.x * WALLS_SIZE) + (WALLS_SIZE / 2);
 	cub->player.y = (cub->player.y * WALLS_SIZE) + (WALLS_SIZE / 2);
-}
-
-void    print_player(t_cub *cub)
-{
-    int line_count;
-    int col_count;
-    int count;
-
-    line_count = 0;
-    count = 0;
-    cub->player.new_x = cub->player.x + cub->player.x * ZOOM;
-    cub->player.new_y = cub->player.y + cub->player.y * ZOOM;
-    while (line_count <= PLAYER_SIZE)
-    {
-        col_count = 0;
-        while (col_count <= PLAYER_SIZE - (count * 2))
-        {
-            my_mlx_pixel_put(&cub->img, cub->player.new_x + col_count + count, cub->player.new_y - line_count, RED);
-            col_count++;
-        }
-        line_count++;
-        count++;
-    }
-}
-
-void	move_player(t_cub *cub)
-{
-	int line_count;
-	int col_count;
-	int count;
-
-	line_count = 0;
-	count = 0;
-	while (line_count <= PLAYER_SIZE)
-	{
-		col_count = 0;
-		while (col_count <= PLAYER_SIZE - (count * 2))
-		{
-			my_mlx_pixel_put(&cub->img, cub->player.new_x + cub->player.horizontal + col_count + count, cub->player.new_y + cub->player.vertical - line_count, RED);
-			col_count++;
-		}
-		line_count++;
-		count++;
-	}
 }
 
 void	find_angle(t_cub *cub)
