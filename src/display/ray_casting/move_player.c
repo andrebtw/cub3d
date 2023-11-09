@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mthibaul <mthibaul@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:20:52 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/11/03 19:20:52 by mthibaul         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:25:12 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	move_player_angle(t_cub *cub)
 			cub->player.x -= sin(to_radians(cub->player.dir)) * SPEED_X;
 			cub->player.y -= cos(to_radians(cub->player.dir)) * SPEED_X;
 		}
-		// cub->player.y += sin(to_radians(cub->player.dir)) * SPEED;
 	}
 	if (cub->player.vertical)
 	{
@@ -58,9 +57,9 @@ int move_player_3D(t_cub *cub)
 	cub->player.horizontal = 0;
 	cub->player.vertical = 0;
 	cub->player.rotating = 0;
-	printf("X: %f\n", cub->player.x);
-	printf("Y: %f\n", cub->player.y);
-	printf("DIRECTION: %f\n", cub->player.dir);
+	// printf("X: %f\n", cub->player.x);
+	// printf("Y: %f\n", cub->player.y);
+	// printf("DIRECTION: %f\n", cub->player.dir);
     print_mapbg(cub);
 	print_map(cub);
 	print_player(cub);

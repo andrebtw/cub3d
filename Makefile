@@ -6,7 +6,7 @@
 #    By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 22:03:15 by anrodri2          #+#    #+#              #
-#    Updated: 2023/10/30 18:39:41 by anrodri2         ###   ########.fr        #
+#    Updated: 2023/11/09 10:34:55 by anrodri2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,6 @@ SRCS =	main.c \
 		display/ray_casting/drawing_walls.c \
 		display/print_mapbg.c \
 		display/shapes/print_rect.c \
-		display/print_player.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 
