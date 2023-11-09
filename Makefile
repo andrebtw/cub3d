@@ -47,7 +47,8 @@ SRCS =	main.c \
 		display/ray_casting/move_player.c\
 		display/ray_casting/drawing_walls.c \
 		display/print_mapbg.c \
-		display/shapes/print_rect.c
+		display/shapes/print_rect.c \
+		display/print_player.c
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

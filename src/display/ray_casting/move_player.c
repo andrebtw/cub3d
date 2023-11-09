@@ -63,7 +63,8 @@ int move_player_3D(t_cub *cub)
 	printf("DIRECTION: %f\n", cub->player.dir);
     print_mapbg(cub);
 	print_map(cub);
+	print_player(cub);
     // move_player(cub);
     mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
-    return (0);
+    return (EXIT_SUCCESS);
 }
