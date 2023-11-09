@@ -31,8 +31,9 @@ int cast_rays(t_cub *cub)
 	double	wall_v;
 	int		ray_nmb;
 
-	ray_angle = cub->player.dir - (FOV / 2);
+	ray_angle = cub->player.dir + (FOV / 2);
 	ray_nmb = 0;
+	printf("Angle : %f\n", cub->player.dir);
 	while (ray_nmb < RES_WIDTH)
 	{
 		if (ray_angle > 360)
@@ -41,14 +42,14 @@ int cast_rays(t_cub *cub)
 			ray_angle += 360;
 		wall_h = horizontal_intersections(cub, ray_angle);
 		wall_v = vertical_intersections(cub, ray_angle);
-		if ((wall_h > wall_v && wall_v > 0) || wall_h < 0)
+		if ((wall_h >= wall_v && wall_v > 0) || wall_h < 0)
 		{
 			//printf("Angle : %f || Nmb : %d\n", ray_angle, ray_nmb);
 			draw_walls(cub, wall_v * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb);
 		}
 		else
 			draw_walls(cub, wall_h * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb);
-		ray_angle += cub->ray.angle_btw_ray;
+		ray_angle -= cub->ray.angle_btw_ray;
 		ray_nmb++;
 	}
 	return (0);
@@ -69,7 +70,7 @@ double horizontal_intersections(t_cub *cub, double ray_angle)
 		inter.y = floor(cub->player.y / WALLS_SIZE) * WALLS_SIZE + WALLS_SIZE;
 		a.y = WALLS_SIZE;
 	}
-	a.x = floor(WALLS_SIZE / tan(to_radians(ray_angle)));
+	a.x = WALLS_SIZE / tan(to_radians(ray_angle));
     inter.x = cub->player.x + (cub->player.y - inter.y) / tan(to_radians(ray_angle));
 	if ((ray_angle < 270 && ray_angle > 90) && a.x > 0)
         a.x *= -1;
@@ -94,7 +95,7 @@ double vertical_intersections(t_cub *cub, double ray_angle)
 
 	if (ray_angle >= 270 || ray_angle <= 90)
 	{
-		inter.x = floor(cub->player.x / WALLS_SIZE) * WALLS_SIZE + 64;
+		inter.x = floor(cub->player.x / WALLS_SIZE) * WALLS_SIZE + WALLS_SIZE;
 		a.x = WALLS_SIZE;
 	}
 	else
@@ -102,7 +103,7 @@ double vertical_intersections(t_cub *cub, double ray_angle)
 		inter.x = floor(cub->player.x / WALLS_SIZE) * WALLS_SIZE - 1;
 		a.x = -WALLS_SIZE;
 	}
-	a.y = floor(WALLS_SIZE * tan(to_radians(ray_angle)));
+	a.y = WALLS_SIZE * tan(to_radians(ray_angle));
 	if (ray_angle > 0 && ray_angle < 180 && a.y > 0)
         a.y *= -1;
 	if ((ray_angle <= 0 || ray_angle >= 180) && a.y < 0)

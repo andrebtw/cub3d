@@ -31,7 +31,7 @@
 # define FALSE 0
 
 /* --- WINDOW CONSTANTS --- */
-# define RES_WIDTH 1960
+# define RES_WIDTH 1920
 # define RES_HEIGHT 1080
 # define MAP_WIDTH 320
 # define MAP_HEIGHT 320
@@ -43,9 +43,9 @@
 # define WALLS_SIZE 64.0
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
-# define SPEED_Y 5.0
-# define SPEED_X 3.5
-# define ROTATE_SENS 5
+# define SPEED_Y 2.0
+# define SPEED_X 2.0
+# define ROTATE_SENS 3
 # define SPEED_SPRINT 12.5
 # define MAP_OFFSET 20
 # define MAP_LIMIT_X 160
@@ -53,7 +53,7 @@
 
 /* --- PIXEL COLORS --- */
 # define WHITE 0xFFFFFF
-# define BROWN 0x663300
+# define BROWN 0xB98A2D
 # define BLACK 0x000000
 # define RED 0xCC0000
 # define BLUE 0x66BFF
