@@ -31,8 +31,8 @@
 # define FALSE 0
 
 /* --- WINDOW CONSTANTS --- */
-# define RES_WIDTH 1280
-# define RES_HEIGHT 720
+# define RES_WIDTH 1960
+# define RES_HEIGHT 1080
 # define MAP_WIDTH 320
 # define MAP_HEIGHT 320
 # define WIN_TITLE "Cub3D"
@@ -43,9 +43,9 @@
 # define WALLS_SIZE 64.0
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
-# define SPEED_Y 10.0
+# define SPEED_Y 5.0
 # define SPEED_X 3.5
-# define ROTATE_SENS 3
+# define ROTATE_SENS 5
 # define SPEED_SPRINT 12.5
 # define MAP_OFFSET 20
 # define MAP_LIMIT_X 160
@@ -256,7 +256,7 @@ void	print_player(t_cub *cub);
 /* --- RAY CASTING --- */
 int		ray_casting_main(t_cub *cub);
 void	init_ray_cast(t_cub *cub);
-double	calc_wall_distance(t_cub *cub, t_point inter);
+double	calc_wall_distance(t_cub *cub, t_point inter, double ray_angle);
 int		draw_walls(t_cub *cub, double wall_dist, int ray_nmb);
 int     move_player_3D(t_cub *cub);
 

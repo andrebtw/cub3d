@@ -15,6 +15,10 @@
 void	move_player_angle(t_cub *cub)
 {
 	cub->player.dir += cub->player.rotating * ROTATE_SENS;
+	if (cub->player.dir >= 360)
+		cub->player.dir -= 360;
+	if (cub->player.dir < 0)
+		cub->player.dir += 360;
 	if (cub->player.horizontal)
 	{
 		if (cub->player.horizontal == 1)
@@ -27,7 +31,6 @@ void	move_player_angle(t_cub *cub)
 			cub->player.x -= sin(to_radians(cub->player.dir)) * SPEED_X;
 			cub->player.y -= cos(to_radians(cub->player.dir)) * SPEED_X;
 		}
-		// cub->player.y += sin(to_radians(cub->player.dir)) * SPEED;
 	}
 	if (cub->player.vertical)
 	{

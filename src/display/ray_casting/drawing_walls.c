@@ -23,7 +23,7 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb)
 	projected_size = ceil(cub->ray.constant / wall_dist);
 	wall_pos_up = (int) cub->ray.p_p_center.y - (projected_size / 2);
 	wall_pos_down =(int) cub->ray.p_p_center.y + (projected_size / 2);
-    //printf("Wall dist : %d\n", ray_nmb);
+    //printf("Wall dist : %f\n", wall_dist);
 	while (++pxl_nmb < RES_HEIGHT)
 	{
 		//printf("PXL NMB : %d || RAY NMB : %d\n", pxl_nmb, ray_nmb);
@@ -38,7 +38,9 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb)
 	return (0);
 }
 
-double	calc_wall_distance(t_cub *cub, t_point inter)
+double	calc_wall_distance(t_cub *cub, t_point inter, double ray_angle)
 {
+	(void) ray_angle;
 	return (sqrt(pow(cub->player.x - inter.x, 2) + pow(cub->player.y - inter.y, 2)));
+	//return (fabs(cub->player.y - inter.y) / cos(ray_angle));
 }

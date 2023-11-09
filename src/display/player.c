@@ -49,7 +49,7 @@ void	find_angle(t_cub *cub)
 	else if (cub->player.side == 'S')
 		cub->player.dir = 270;
 	else if (cub->player.side == 'E')
-		cub->player.dir = 360;
+		cub->player.dir = 0;
 	else
 		cub->player.dir = 180;
 }
