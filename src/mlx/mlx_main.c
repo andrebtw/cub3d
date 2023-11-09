@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:02:55 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/03 17:44:41 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:30:15 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	mlx_create_window(t_cub *cub)
     print_mapbg(cub);
 	print_map(cub);
     find_player(cub);
+	print_player(cub);
 	ray_casting_main(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
 	return (EXIT_SUCCESS);

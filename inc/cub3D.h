@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/03 19:20:44 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/09 10:34:22 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,8 @@ typedef struct s_player
 	int 	horizontal;
 	int 	vertical;
 	int		rotating;
+	int		map_x;
+	int		map_y;
 }			t_player;
 
 typedef struct s_point
