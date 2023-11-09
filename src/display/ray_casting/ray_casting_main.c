@@ -98,9 +98,8 @@ double vertical_intersections(t_cub *cub, double ray_angle)
 		a.x = -WALLS_SIZE;
 	}
 	a.y = floor(WALLS_SIZE * tan(to_radians(ray_angle)));
-    if (ray_angle >= 0 && ray_angle <= 180 && a.y > 0)
+	if (ray_angle >= 0 && ray_angle <= 180 && a.y > 0)
         a.y *= -1;
-    //printf("AY : %f\n", ray_angle);
 	inter.y = cub->player.y + (cub->player.x - inter.x) * tan(to_radians(ray_angle));
     if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
         return (-1);
