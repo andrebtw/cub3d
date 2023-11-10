@@ -131,8 +131,8 @@ int check_wall(t_cub *cub, t_point inter)
 	y = floor(inter.y / WALLS_SIZE);
 	if (cub->parsing.map[y][x] == '1')
     {
-        //printf("Inter x : %d || Inter y : %d\n", x, y);
-        //printf("WALL\n\n");
+        printf("Inter x : %d || Inter y : %d\n", x, y);
+        printf("WALL\n\n");
         return (0);
     }
 	return (1);

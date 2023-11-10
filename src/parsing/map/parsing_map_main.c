@@ -124,6 +124,6 @@ int	parsing_map(t_cub *cub)
 	if (spawn_location_check(cub))
 		return (EXIT_FAILURE);
     map_max_len(cub);
-	check_diagonals(cub);
+	//check_diagonals(cub);
 	return (EXIT_SUCCESS);
 }
