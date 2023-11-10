@@ -239,6 +239,7 @@ void    map_max_len(t_cub *cub);
 /* --- MAP PARSING --- */
 int		parsing_map(t_cub *cub);
 int		parsing_map_loop(t_cub *cub);
+void	check_diagonals(t_cub *cub);
 # define POSSIBLE_CHARS "01NSEW \n"
 
 /* --- MLX --- */

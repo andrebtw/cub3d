@@ -12,6 +12,8 @@
 
 #include "cub3D.h"
 
+int check_movement(t_cub *cub);
+
 void	move_player_angle(t_cub *cub)
 {
 	cub->player.dir += cub->player.rotating * ROTATE_SENS;
@@ -56,6 +58,13 @@ int move_player_3D(t_cub *cub)
     // cub->player.y += cub->player.vertical * sin(to_radians(cub->player.dir)) * SPEED;
 	// if (sin(to_radians(cub->player.dir)) == 0)
 		// cub->player.y += cub->player.vertical * SPEED;
+	/*if (check_movement(cub) == 1)
+	{
+		cub->player.horizontal = 0;
+		cub->player.vertical = 0;
+		cub->player.rotating = 0;
+		return (0);
+	}*/
 	move_player_angle(cub);
     ray_casting_main(cub);
 	cub->player.horizontal = 0;
@@ -70,4 +79,40 @@ int move_player_3D(t_cub *cub)
     // move_player(cub);
     mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
     return (EXIT_SUCCESS);
+}
+
+int check_movement(t_cub *cub)
+{
+	double x;
+	double y;
+
+	if (cub->player.horizontal)
+	{
+		if (cub->player.horizontal == 1)
+		{
+			x = cub->player.x + sin(to_radians(cub->player.dir)) * SPEED_X;
+			y = cub->player.y + cos(to_radians(cub->player.dir)) * SPEED_X;
+		}
+		else if (cub->player.horizontal == -1)
+		{
+			x = cub->player.x -= sin(to_radians(cub->player.dir)) * SPEED_X;
+			y = cub->player.y -= cos(to_radians(cub->player.dir)) * SPEED_X;
+		}
+	}
+	if (cub->player.vertical)
+	{
+		if (cub->player.vertical == 1)
+		{
+			x = cub->player.x += cos(to_radians(cub->player.dir)) * SPEED_Y;
+			y = cub->player.y -= sin(to_radians(cub->player.dir)) * SPEED_Y;
+		}
+		else if (cub->player.vertical == -1)
+		{
+			x = cub->player.x -= cos(to_radians(cub->player.dir)) * SPEED_Y;
+			y = cub->player.y += sin(to_radians(cub->player.dir)) * SPEED_Y;
+		}
+	}
+	if (cub->parsing.map[(int) floor(y / WALLS_SIZE)][(int) floor(x / WALLS_SIZE)] == '1')
+		return (1);
+	return (0);
 }

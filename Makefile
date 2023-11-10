@@ -37,6 +37,7 @@ SRCS =	main.c \
 		parsing/cfg_parsing/parse_cfg.c \
 		parsing/map/parsing_map_main.c \
 		parsing/map/parsing_map_loop.c \
+		parsing/map/check_diagonals.c \
 		mlx/mlx_main.c \
 		mlx/mlx_hooks.c \
 		display/print_map.c \

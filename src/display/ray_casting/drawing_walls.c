@@ -16,13 +16,13 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb)
 {
 	int projected_size;
 	int wall_pos_up;
-	//int wall_pos_down;
+	int wall_pos_down;
 	int pxl_nmb;
 
 	pxl_nmb = -1;
 	projected_size = ceil(cub->ray.constant / wall_dist);
 	wall_pos_up = (int) cub->ray.p_p_center.y - (projected_size / 2);
-	//wall_pos_down = (int) cub->ray.p_p_center.y + (projected_size / 2);
+	wall_pos_down = (int) cub->ray.p_p_center.y + (projected_size / 2);
     //printf("Wall dist : %f\n", wall_dist);
 	while (++pxl_nmb < RES_HEIGHT)
 	{
@@ -32,7 +32,7 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb)
 			my_mlx_pixel_put(&cub->img,  ray_nmb, pxl_nmb, create_trgb(255, cub->parsing.ceiling_color_rgb[0],  cub->parsing.ceiling_color_rgb[1], cub->parsing.ceiling_color_rgb[2]));
 		else if (pxl_nmb > wall_pos_down)
 			my_mlx_pixel_put(&cub->img, ray_nmb, pxl_nmb, create_trgb(255, cub->parsing.floor_color_rgb[0],  cub->parsing.floor_color_rgb[1], cub->parsing.floor_color_rgb[2]));
-		else if ()
+		else
 			my_mlx_pixel_put(&cub->img, ray_nmb, pxl_nmb, BROWN);
 	}
 	return (0);

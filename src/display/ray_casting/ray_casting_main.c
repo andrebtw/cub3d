@@ -33,7 +33,7 @@ int cast_rays(t_cub *cub)
 
 	ray_angle = cub->player.dir + (FOV / 2);
 	ray_nmb = 0;
-	printf("Angle : %f\n", cub->player.dir);
+	//printf("Angle : %f\n", cub->player.dir);
 	while (ray_nmb < RES_WIDTH)
 	{
 		if (ray_angle > 360)
@@ -42,6 +42,7 @@ int cast_rays(t_cub *cub)
 			ray_angle += 360;
 		wall_h = horizontal_intersections(cub, ray_angle);
 		wall_v = vertical_intersections(cub, ray_angle);
+		//wall_v = -1;
 		if ((wall_h >= wall_v && wall_v > 0) || wall_h < 0)
 		{
 			//printf("Angle : %f || Nmb : %d\n", ray_angle, ray_nmb);
@@ -110,13 +111,13 @@ double vertical_intersections(t_cub *cub, double ray_angle)
 		a.y *= -1;
 	inter.y = cub->player.y + (cub->player.x - inter.x) * tan(to_radians(ray_angle));
     if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
-        return (-1);
+		return (-1);
     while (check_wall(cub, inter) != 0)
 	{
 		inter.x += a.x;
 		inter.y += a.y;
         if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
-            return (-1);
+			return (-1);
 	}
 	return (calc_wall_distance(cub, inter, ray_angle));
 }
