@@ -47,10 +47,18 @@ int cast_rays(t_cub *cub)
 		if ((wall_h >= wall_v && wall_v > 0) || wall_h < 0)
 		{
 			//printf("Angle : %f || Nmb : %d\n", ray_angle, ray_nmb);
-			draw_walls(cub, wall_v * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb);
+            if (ray_angle <= 90 || ray_angle >= 270)
+			    draw_walls(cub, wall_v * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, WE);
+            else
+                draw_walls(cub, wall_v * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, EA);
 		}
 		else
-			draw_walls(cub, wall_h * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb);
+        {
+            if (ray_angle >= 0 && ray_angle <= 180)
+                draw_walls(cub, wall_h * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, SO);
+            else
+                draw_walls(cub, wall_h * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, NO);
+        }
 		ray_angle -= cub->ray.angle_btw_ray;
 		ray_nmb++;
 	}

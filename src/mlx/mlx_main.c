@@ -53,6 +53,7 @@ int	mlx_main(t_cub *cub)
 	int	ret_value;
 
 	ret_value = mlx_create_window(cub);
+    textures_to_img(cub);
 	if (ret_value)
 		return (ret_value);
     mlx_hooks(cub);

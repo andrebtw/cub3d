@@ -37,6 +37,12 @@
 # define MAP_HEIGHT 320
 # define WIN_TITLE "Cub3D"
 
+/* --- TEXTURES SIDES --- */
+# define NO 1
+# define SO 2
+# define EA 3
+# define WE 4
+
 /* --- DISPLAY CONSTANTS --- */
 # define ZOOM 20.0
 # define PLAYER_SIZE 11.0
@@ -199,11 +205,23 @@ typedef struct s_ray
 	t_point	p_p_center;
 }		t_ray;
 
+typedef struct s_texture
+{
+    void    *mlx;
+    void    *img;
+    int     width;
+    int     height;
+}   t_texture;
+
 typedef struct s_cub
 {
     t_parsing	parsing;
     t_mlx		mlx;
 	int			map_ratio;
+    t_texture   no;
+    t_texture   so;
+    t_texture   ea;
+    t_texture   we;
     t_img       img;
 	t_img		img_mapbg;
 	t_player	player;
@@ -255,12 +273,13 @@ int		print_map(t_cub *cub);
 void	print_mapbg(t_cub *cub);
 void	find_player(t_cub *cub);
 void	print_player(t_cub *cub);
+void    textures_to_img(t_cub *cub);
 
 /* --- RAY CASTING --- */
 int		ray_casting_main(t_cub *cub);
 void	init_ray_cast(t_cub *cub);
 double	calc_wall_distance(t_cub *cub, t_point inter);
-int		draw_walls(t_cub *cub, double wall_dist, int ray_nmb);
+int		draw_walls(t_cub *cub, double wall_dist, int ray_nmb, int side);
 int     move_player_3D(t_cub *cub);
 
 /* --- TOOLS --- */

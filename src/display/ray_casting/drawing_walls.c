@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb)
+int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb, int side)
 {
 	int projected_size;
 	int wall_pos_up;
@@ -41,4 +41,16 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb)
 double	calc_wall_distance(t_cub *cub, t_point inter)
 {
 	return (sqrt(pow(cub->player.x - inter.x, 2) + pow(cub->player.y - inter.y, 2)));
+}
+
+void    textures_to_img(t_cub *cub)
+{
+    cub->no.mlx = mlx_init();
+    cub->so.mlx = mlx_init();
+    cub->ea.mlx = mlx_init();
+    cub->we.mlx = mlx_init();
+    cub->no.img = mlx_xpm_file_to_image(cub->no.mlx, cub->parsing.no_path, &cub->no.width, &cub->no.height);
+    cub->so.img = mlx_xpm_file_to_image(cub->so.mlx, cub->parsing.so_path, &cub->so.width, &cub->so.height);
+    cub->ea.img = mlx_xpm_file_to_image(cub->ea.mlx, cub->parsing.ea_path, &cub->ea.width, &cub->ea.height);
+    cub->we.img = mlx_xpm_file_to_image(cub->we.mlx, cub->parsing.we_path, &cub->we.width, &cub->we.height);
 }
