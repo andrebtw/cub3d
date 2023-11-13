@@ -86,6 +86,8 @@ int check_movement(t_cub *cub)
 	double x;
 	double y;
 
+    x = 0;
+    y = 0;
 	if (cub->player.horizontal)
 	{
 		if (cub->player.horizontal == 1)

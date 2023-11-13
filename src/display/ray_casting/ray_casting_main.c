@@ -14,7 +14,7 @@
 
 int		cast_rays(t_cub *cub);
 double	horizontal_intersections(t_cub *cub, double ray_angle);
-double vertical_intersections(t_cub *cub, double ray_angle);
+double  vertical_intersections(t_cub *cub, double ray_angle);
 int		check_wall(t_cub *cub, t_point inter);
 
 int ray_casting_main(t_cub *cub)
@@ -43,6 +43,7 @@ int cast_rays(t_cub *cub)
 		wall_h = horizontal_intersections(cub, ray_angle);
 		wall_v = vertical_intersections(cub, ray_angle);
 		//wall_v = -1;
+        //printf("Wall H : %f || Wall V : %f\n", wall_h, wall_v);
 		if ((wall_h >= wall_v && wall_v > 0) || wall_h < 0)
 		{
 			//printf("Angle : %f || Nmb : %d\n", ray_angle, ray_nmb);
@@ -63,7 +64,7 @@ double horizontal_intersections(t_cub *cub, double ray_angle)
 
 	if (ray_angle >= 0 && ray_angle <= 180)
 	{
-		inter.y = floor(cub->player.y / WALLS_SIZE) * WALLS_SIZE - 1;
+		inter.y = floor(cub->player.y / WALLS_SIZE) * WALLS_SIZE - 0.001;
 		a.y = -WALLS_SIZE;
 	}
 	else
@@ -86,7 +87,7 @@ double horizontal_intersections(t_cub *cub, double ray_angle)
         if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
             return (-1);
 	}
-	return (calc_wall_distance(cub, inter, ray_angle));
+	return (calc_wall_distance(cub, inter));
 }
 
 double vertical_intersections(t_cub *cub, double ray_angle)
@@ -101,7 +102,7 @@ double vertical_intersections(t_cub *cub, double ray_angle)
 	}
 	else
 	{
-		inter.x = floor(cub->player.x / WALLS_SIZE) * WALLS_SIZE - 1;
+		inter.x = floor(cub->player.x / WALLS_SIZE) * WALLS_SIZE - 0.001;
 		a.x = -WALLS_SIZE;
 	}
 	a.y = WALLS_SIZE * tan(to_radians(ray_angle));
@@ -119,7 +120,7 @@ double vertical_intersections(t_cub *cub, double ray_angle)
         if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
 			return (-1);
 	}
-	return (calc_wall_distance(cub, inter, ray_angle));
+	return (calc_wall_distance(cub, inter));
 }
 
 int check_wall(t_cub *cub, t_point inter)
@@ -131,8 +132,8 @@ int check_wall(t_cub *cub, t_point inter)
 	y = floor(inter.y / WALLS_SIZE);
 	if (cub->parsing.map[y][x] == '1')
     {
-        printf("Inter x : %d || Inter y : %d\n", x, y);
-        printf("WALL\n\n");
+        //printf("Inter x : %d || Inter y : %d\n", x, y);
+        //printf("WALL\n\n");
         return (0);
     }
 	return (1);
