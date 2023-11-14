@@ -31,8 +31,8 @@
 # define FALSE 0
 
 /* --- WINDOW CONSTANTS --- */
-# define RES_WIDTH 720
-# define RES_HEIGHT 400
+# define RES_WIDTH 1920
+# define RES_HEIGHT 1080
 # define MAP_WIDTH 320
 # define MAP_HEIGHT 320
 # define WIN_TITLE "Cub3D"
@@ -49,8 +49,8 @@
 # define WALLS_SIZE 64.0
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
-# define SPEED_Y 2.0
-# define SPEED_X 2.0
+# define SPEED_Y 3.0
+# define SPEED_X 3.0
 # define ROTATE_SENS 3
 # define SPEED_SPRINT 12.5
 # define MAP_OFFSET 20
@@ -208,7 +208,7 @@ typedef struct s_ray
 typedef struct s_texture
 {
     void    *mlx;
-    void    *img;
+    t_img	img;
     int     width;
     int     height;
 }   t_texture;
@@ -274,6 +274,7 @@ void	print_mapbg(t_cub *cub);
 void	find_player(t_cub *cub);
 void	print_player(t_cub *cub);
 void    textures_to_img(t_cub *cub);
+char	*get_mlx_pxl(t_img *img, int x, int y);
 
 /* --- RAY CASTING --- */
 int		ray_casting_main(t_cub *cub);

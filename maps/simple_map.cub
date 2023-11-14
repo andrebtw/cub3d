@@ -1,7 +1,7 @@
-NO ./textures/NO
-SO ./textures/SO
-WE ./textures/EA
-EA ./textures/WE
+NO ./textures/Planks.png
+SO ./textures/Planks.png
+WE ./textures/Planks.png
+EA ./textures/Planks.png
 
 F 0,100,0
 C 20,0,200

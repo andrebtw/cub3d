@@ -22,6 +22,11 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+char	*get_mlx_pxl(t_img *img, int x, int y)
+{
+	return (img->addr + (y * img->line_length + x * 4));
+}
+
 int	mlx_create_window(t_cub *cub)
 {
 	cub->mlx.ptr = mlx_init();

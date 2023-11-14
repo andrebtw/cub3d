@@ -19,6 +19,7 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb, int side)
 	int wall_pos_down;
 	int pxl_nmb;
 
+	(void) side;
 	pxl_nmb = -1;
 	projected_size = ceil(cub->ray.constant / wall_dist);
 	wall_pos_up = (int) cub->ray.p_p_center.y - (projected_size / 2);
@@ -33,7 +34,7 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb, int side)
 		else if (pxl_nmb > wall_pos_down)
 			my_mlx_pixel_put(&cub->img, ray_nmb, pxl_nmb, create_trgb(255, cub->parsing.floor_color_rgb[0],  cub->parsing.floor_color_rgb[1], cub->parsing.floor_color_rgb[2]));
 		else
-			my_mlx_pixel_put(&cub->img, ray_nmb, pxl_nmb, BROWN);
+			*(unsigned int*)get_mlx_pxl(&cub->img, ray_nmb, pxl_nmb) = *(unsigned int*)get_mlx_pxl(cub->ea.img.img, (ray_nmb % 64), (pxl_nmb % 64));
 	}
 	return (0);
 }
@@ -49,8 +50,12 @@ void    textures_to_img(t_cub *cub)
     cub->so.mlx = mlx_init();
     cub->ea.mlx = mlx_init();
     cub->we.mlx = mlx_init();
-    cub->no.img = mlx_xpm_file_to_image(cub->no.mlx, cub->parsing.no_path, &cub->no.width, &cub->no.height);
-    cub->so.img = mlx_xpm_file_to_image(cub->so.mlx, cub->parsing.so_path, &cub->so.width, &cub->so.height);
-    cub->ea.img = mlx_xpm_file_to_image(cub->ea.mlx, cub->parsing.ea_path, &cub->ea.width, &cub->ea.height);
-    cub->we.img = mlx_xpm_file_to_image(cub->we.mlx, cub->parsing.we_path, &cub->we.width, &cub->we.height);
+    cub->no.img.img = mlx_xpm_file_to_image(cub->no.mlx, cub->parsing.no_path, &cub->no.width, &cub->no.height);
+    cub->so.img.img = mlx_xpm_file_to_image(cub->so.mlx, cub->parsing.so_path, &cub->so.width, &cub->so.height);
+    cub->ea.img.img = mlx_xpm_file_to_image(cub->ea.mlx, cub->parsing.ea_path, &cub->ea.width, &cub->ea.height);
+    cub->we.img.img = mlx_xpm_file_to_image(cub->we.mlx, cub->parsing.we_path, &cub->we.width, &cub->we.height);
+	cub->no.img.addr = mlx_get_data_addr(cub->no.img.img, &cub->no.img.bits_per_pixel, &cub->no.img.line_length, &cub->no.img.endian);
+	cub->so.img.addr = mlx_get_data_addr(cub->so.img.img, &cub->so.img.bits_per_pixel, &cub->so.img.line_length, &cub->so.img.endian);
+	cub->ea.img.addr = mlx_get_data_addr(cub->ea.img.img, &cub->ea.img.bits_per_pixel, &cub->ea.img.line_length, &cub->ea.img.endian);
+	cub->we.img.addr = mlx_get_data_addr(cub->we.img.img, &cub->we.img.bits_per_pixel, &cub->we.img.line_length, &cub->we.img.endian);
 }

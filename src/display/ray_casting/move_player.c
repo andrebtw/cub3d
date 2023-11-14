@@ -51,20 +51,6 @@ void	move_player_angle(t_cub *cub)
 
 int move_player_3D(t_cub *cub)
 {
-    // printf("X before : %f\n", cub->player.x);
-    // cub->player.x += cub->player.horizontal * cos(to_radians(cub->player.dir)) * SPEED;
-    // if (cos(to_radians(cub->player.dir)) == 0)
-    // printf("X after : %f\n\n", cub->player.x);
-    // cub->player.y += cub->player.vertical * sin(to_radians(cub->player.dir)) * SPEED;
-	// if (sin(to_radians(cub->player.dir)) == 0)
-		// cub->player.y += cub->player.vertical * SPEED;
-	/*if (check_movement(cub) == 1)
-	{
-		cub->player.horizontal = 0;
-		cub->player.vertical = 0;
-		cub->player.rotating = 0;
-		return (0);
-	}*/
 	move_player_angle(cub);
     ray_casting_main(cub);
 	cub->player.horizontal = 0;
@@ -88,6 +74,10 @@ int check_movement(t_cub *cub)
 
     x = 0;
     y = 0;
+	if (cub->player.dir >= 360)
+		cub->player.dir -= 360;
+	if (cub->player.dir < 0)
+		cub->player.dir += 360;
 	if (cub->player.horizontal)
 	{
 		if (cub->player.horizontal == 1)
@@ -114,7 +104,11 @@ int check_movement(t_cub *cub)
 			y = cub->player.y += sin(to_radians(cub->player.dir)) * SPEED_Y;
 		}
 	}
-	if (cub->parsing.map[(int) floor(y / WALLS_SIZE)][(int) floor(x / WALLS_SIZE)] == '1')
+	x = floor(x / WALLS_SIZE);
+	y = floor(y / WALLS_SIZE);
+	if (x != 0)
+		printf("X : %f || Y : %f  |||  Val : %c\n", x, y, cub->parsing.map[(int) y][(int) x]);
+	if (cub->parsing.map[(int) y][(int) x] == '1')
 		return (1);
 	return (0);
 }
