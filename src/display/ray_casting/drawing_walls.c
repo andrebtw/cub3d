@@ -43,12 +43,12 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb, t_displayed_col *displ
             if (displayed_col->x < 0)
             {
                 //printf("Y : %d\n", displayed_col->y % (int) WALLS_SIZE);
-                *(unsigned int*)get_mlx_pxl(&cub->img, ray_nmb, pxl_nmb) = *(unsigned int*)get_mlx_pxl(&displayed_col->texture->img, displayed_col->y % (int) WALLS_SIZE, texture_pxl / ((wall_pos_down - wall_pos_up + 1) / WALLS_SIZE));
+                *(unsigned int*)get_mlx_pxl(&cub->img, ray_nmb, pxl_nmb) = *(unsigned int*)get_mlx_pxl(&displayed_col->texture->img, displayed_col->y, texture_pxl / ((wall_pos_down - wall_pos_up + 1) / WALLS_SIZE));
             }
             else
             {
                 //printf("X : %d\n", displayed_col->x % (int) WALLS_SIZE);
-                *(unsigned int*)get_mlx_pxl(&cub->img, ray_nmb, pxl_nmb) = *(unsigned int*)get_mlx_pxl(&displayed_col->texture->img, displayed_col->x % (int) WALLS_SIZE, texture_pxl / ((wall_pos_down - wall_pos_up + 1) / WALLS_SIZE));
+                *(unsigned int*)get_mlx_pxl(&cub->img, ray_nmb, pxl_nmb) = *(unsigned int*)get_mlx_pxl(&displayed_col->texture->img, displayed_col->x, texture_pxl / ((wall_pos_down - wall_pos_up + 1) / WALLS_SIZE));
             }
             //printf("Text pxl : %d\n\n", texture_pxl);
             texture_pxl++;

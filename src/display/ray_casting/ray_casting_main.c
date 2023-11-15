@@ -100,7 +100,7 @@ double horizontal_intersections(t_cub *cub, double ray_angle, int *x_coord)
         if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
             return (-1);
 	}
-    *x_coord = floor(inter.x);
+    *x_coord = (int) floor(inter.x) % (int) WALLS_SIZE;
 	return (calc_wall_distance(cub, inter));
 }
 
@@ -134,7 +134,7 @@ double vertical_intersections(t_cub *cub, double ray_angle, int *y_coord)
         if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
 			return (-1);
 	}
-    *y_coord = floor(inter.y);
+    *y_coord = (int) floor(inter.y) % (int) WALLS_SIZE;
 	return (calc_wall_distance(cub, inter));
 }
 

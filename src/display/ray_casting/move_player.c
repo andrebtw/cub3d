@@ -52,7 +52,7 @@ void	move_player_angle(t_cub *cub)
 int move_player_3D(t_cub *cub)
 {
 
-	if (check_movement(cub) == 0)
+	//if (check_movement(cub) == 0)
 	{
 		move_player_angle(cub);
 		ray_casting_main(cub);
