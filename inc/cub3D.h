@@ -31,8 +31,8 @@
 # define FALSE 0
 
 /* --- WINDOW CONSTANTS --- */
-# define RES_WIDTH 1920
-# define RES_HEIGHT 1080
+# define RES_WIDTH 720
+# define RES_HEIGHT 400
 # define MAP_WIDTH 320
 # define MAP_HEIGHT 320
 # define WIN_TITLE "Cub3D"
@@ -240,6 +240,13 @@ typedef struct s_rect
 	int	border_color;
 }	t_rect;
 
+typedef struct s_displayed_col
+{
+    int         x;
+    int         y;
+    t_texture   *texture;
+}   t_displayed_col;
+
 /* --- MAIN FUNCTIONS --- */
 void	custom_exit(t_cub *cub, int exit_code);
 
@@ -280,7 +287,7 @@ char	*get_mlx_pxl(t_img *img, int x, int y);
 int		ray_casting_main(t_cub *cub);
 void	init_ray_cast(t_cub *cub);
 double	calc_wall_distance(t_cub *cub, t_point inter);
-int		draw_walls(t_cub *cub, double wall_dist, int ray_nmb, int side);
+int		draw_walls(t_cub *cub, double wall_dist, int ray_nmb, t_displayed_col *displayed_col);
 int     move_player_3D(t_cub *cub);
 
 /* --- TOOLS --- */

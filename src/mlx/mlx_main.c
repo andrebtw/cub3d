@@ -44,6 +44,7 @@ int	mlx_create_window(t_cub *cub)
 	cub->img.img = mlx_new_image(cub->mlx.ptr, RES_WIDTH, RES_HEIGHT);
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
 								 &cub->img.endian);
+    textures_to_img(cub);
     print_mapbg(cub);
 	print_map(cub);
     find_player(cub);
@@ -58,11 +59,10 @@ int	mlx_main(t_cub *cub)
 	int	ret_value;
 
 	ret_value = mlx_create_window(cub);
-    textures_to_img(cub);
 	if (ret_value)
 		return (ret_value);
     mlx_hooks(cub);
-	mlx_loop_hook(cub->mlx.ptr, move_player_3D, cub);
+    mlx_loop_hook(cub->mlx.ptr, move_player_3D, cub);
 	mlx_loop(cub->mlx.ptr);
 	return (EXIT_SUCCESS);
 }

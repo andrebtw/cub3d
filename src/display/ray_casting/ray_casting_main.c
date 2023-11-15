@@ -13,8 +13,8 @@
 #include "cub3D.h"
 
 int		cast_rays(t_cub *cub);
-double	horizontal_intersections(t_cub *cub, double ray_angle);
-double  vertical_intersections(t_cub *cub, double ray_angle);
+double	horizontal_intersections(t_cub *cub, double ray_angle, int *x_coord);
+double  vertical_intersections(t_cub *cub, double ray_angle, int *y_coord);
 int		check_wall(t_cub *cub, t_point inter);
 
 int ray_casting_main(t_cub *cub)
@@ -26,38 +26,43 @@ int ray_casting_main(t_cub *cub)
 
 int cast_rays(t_cub *cub)
 {
-	double	ray_angle;
-	double	wall_h;
-	double	wall_v;
-	int		ray_nmb;
+	double	        ray_angle;
+	int		        ray_nmb;
+    t_point         walls;
+    t_displayed_col displayed_col;
 
 	ray_angle = cub->player.dir + (FOV / 2);
 	ray_nmb = 0;
-	//printf("Angle : %f\n", cub->player.dir);
+    displayed_col.x = 0;
+    displayed_col.y = 0;
+    //printf("Angle : %f\n", cub->player.dir);
 	while (ray_nmb < RES_WIDTH)
 	{
 		if (ray_angle > 360)
 			ray_angle -= 360;
 		if (ray_angle < 0)
 			ray_angle += 360;
-		wall_h = horizontal_intersections(cub, ray_angle);
-		wall_v = vertical_intersections(cub, ray_angle);
+		walls.x = horizontal_intersections(cub, ray_angle, &displayed_col.x);
+		walls.y = vertical_intersections(cub, ray_angle, &displayed_col.y);
 		//wall_v = -1;
         //printf("Wall H : %f || Wall V : %f\n", wall_h, wall_v);
-		if ((wall_h >= wall_v && wall_v > 0) || wall_h < 0)
+		if ((walls.x >= walls.y && walls.y > 0) || walls.x < 0)
 		{
+            displayed_col.x = -1;
 			//printf("Angle : %f || Nmb : %d\n", ray_angle, ray_nmb);
             if (ray_angle <= 90 || ray_angle >= 270)
-			    draw_walls(cub, wall_v * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, WE);
+			    displayed_col.texture = &(cub->we);
             else
-                draw_walls(cub, wall_v * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, EA);
+                displayed_col.texture = &(cub->ea);
+            draw_walls(cub, walls.y * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, &displayed_col);
 		}
 		else
         {
             if (ray_angle >= 0 && ray_angle <= 180)
-                draw_walls(cub, wall_h * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, SO);
+                displayed_col.texture = &(cub->so);
             else
-                draw_walls(cub, wall_h * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, NO);
+                displayed_col.texture = &(cub->no);
+            draw_walls(cub, walls.x * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, &displayed_col);
         }
 		ray_angle -= cub->ray.angle_btw_ray;
 		ray_nmb++;
@@ -65,7 +70,7 @@ int cast_rays(t_cub *cub)
 	return (0);
 }
 
-double horizontal_intersections(t_cub *cub, double ray_angle)
+double horizontal_intersections(t_cub *cub, double ray_angle, int *x_coord)
 {
 	t_point	inter;
 	t_point	a;
@@ -95,10 +100,11 @@ double horizontal_intersections(t_cub *cub, double ray_angle)
         if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
             return (-1);
 	}
+    *x_coord = floor(inter.x);
 	return (calc_wall_distance(cub, inter));
 }
 
-double vertical_intersections(t_cub *cub, double ray_angle)
+double vertical_intersections(t_cub *cub, double ray_angle, int *y_coord)
 {
 	t_point inter;
 	t_point a;
@@ -128,6 +134,7 @@ double vertical_intersections(t_cub *cub, double ray_angle)
         if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
 			return (-1);
 	}
+    *y_coord = floor(inter.y);
 	return (calc_wall_distance(cub, inter));
 }
 

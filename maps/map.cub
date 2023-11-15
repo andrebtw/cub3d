@@ -1,7 +1,7 @@
-NO ./textures/Planks.png
-SO ./textures/Planks.png
-WE ./textures/Planks.png
-EA ./textures/Planks.png
+NO ./textures/red_bricks.xpm
+SO ./textures/red_bricks.xpm
+WE ./textures/red_bricks.xpm
+EA ./textures/red_bricks.xpm
 
 F 119,207,82
 C 119,207,238

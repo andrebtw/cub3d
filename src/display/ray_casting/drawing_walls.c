@@ -12,18 +12,22 @@
 
 #include "cub3D.h"
 
-int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb, int side)
+int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb, t_displayed_col *displayed_col)
 {
 	int projected_size;
 	int wall_pos_up;
 	int wall_pos_down;
 	int pxl_nmb;
+    int texture_pxl;
 
-	(void) side;
 	pxl_nmb = -1;
-	projected_size = ceil(cub->ray.constant / wall_dist);
+	projected_size = floor(cub->ray.constant / wall_dist);
 	wall_pos_up = (int) cub->ray.p_p_center.y - (projected_size / 2);
 	wall_pos_down = (int) cub->ray.p_p_center.y + (projected_size / 2);
+    texture_pxl = 0;
+    if (wall_pos_up < 0)
+        texture_pxl = -wall_pos_up;
+    //printf("Texture pxl : %f\n", texture_pxl / ((wall_pos_down - wall_pos_up + 1) / WALLS_SIZE));
     //printf("Ray nmb : %d\n", ray_nmb);
 	while (++pxl_nmb < RES_HEIGHT)
 	{
@@ -34,7 +38,21 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb, int side)
 		else if (pxl_nmb > wall_pos_down)
 			my_mlx_pixel_put(&cub->img, ray_nmb, pxl_nmb, create_trgb(255, cub->parsing.floor_color_rgb[0],  cub->parsing.floor_color_rgb[1], cub->parsing.floor_color_rgb[2]));
 		else
-			*(unsigned int*)get_mlx_pxl(&cub->img, ray_nmb, pxl_nmb) = *(unsigned int*)get_mlx_pxl(cub->ea.img.img, (ray_nmb % 64), (pxl_nmb % 64));
+        {
+            //my_mlx_pixel_put(&cub->img, ray_nmb, pxl_nmb, BROWN);
+            if (displayed_col->x < 0)
+            {
+                //printf("Y : %d\n", displayed_col->y % (int) WALLS_SIZE);
+                *(unsigned int*)get_mlx_pxl(&cub->img, ray_nmb, pxl_nmb) = *(unsigned int*)get_mlx_pxl(&displayed_col->texture->img, displayed_col->y % (int) WALLS_SIZE, texture_pxl / ((wall_pos_down - wall_pos_up + 1) / WALLS_SIZE));
+            }
+            else
+            {
+                //printf("X : %d\n", displayed_col->x % (int) WALLS_SIZE);
+                *(unsigned int*)get_mlx_pxl(&cub->img, ray_nmb, pxl_nmb) = *(unsigned int*)get_mlx_pxl(&displayed_col->texture->img, displayed_col->x % (int) WALLS_SIZE, texture_pxl / ((wall_pos_down - wall_pos_up + 1) / WALLS_SIZE));
+            }
+            //printf("Text pxl : %d\n\n", texture_pxl);
+            texture_pxl++;
+        }
 	}
 	return (0);
 }
