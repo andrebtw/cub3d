@@ -25,7 +25,7 @@ int	draw_walls(t_cub *cub, double wall_dist, int ray_nmb, t_displayed_col *displ
 	wall_pos_up = (int) cub->ray.p_p_center.y - (projected_size / 2);
 	wall_pos_down = (int) cub->ray.p_p_center.y + (projected_size / 2);
     texture_pxl = 0;
-    if (wall_pos_up < 0)
+	if (wall_pos_up < 0)
         texture_pxl = -wall_pos_up;
     //printf("Texture pxl : %f\n", texture_pxl / ((wall_pos_down - wall_pos_up + 1) / WALLS_SIZE));
     //printf("Ray nmb : %d\n", ray_nmb);

@@ -51,8 +51,12 @@ void	move_player_angle(t_cub *cub)
 
 int move_player_3D(t_cub *cub)
 {
-	move_player_angle(cub);
-    ray_casting_main(cub);
+
+	if (check_movement(cub) == 0)
+	{
+		move_player_angle(cub);
+		ray_casting_main(cub);
+	}
 	cub->player.horizontal = 0;
 	cub->player.vertical = 0;
 	cub->player.rotating = 0;
@@ -74,10 +78,6 @@ int check_movement(t_cub *cub)
 
     x = 0;
     y = 0;
-	if (cub->player.dir >= 360)
-		cub->player.dir -= 360;
-	if (cub->player.dir < 0)
-		cub->player.dir += 360;
 	if (cub->player.horizontal)
 	{
 		if (cub->player.horizontal == 1)
