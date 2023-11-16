@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/09 10:34:22 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:46:18 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,10 @@
 # define WALLS_SIZE 64.0
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
-# define SPEED_Y 3.0
+# define SPEED_Y 5.0
 # define SPEED_X 3.0
-# define ROTATE_SENS 3
+# define SPRINT_SPEED 2.5
+# define ROTATE_SENS 1.5
 # define SPEED_SPRINT 12.5
 # define MAP_OFFSET 20
 # define MAP_LIMIT_X 160
@@ -68,6 +69,7 @@
 
 /* --- MLX EVENTS --- */
 # define KEYPRESS 02
+# define KEYRELEASE 03
 # define DESTROY_WINDOW 17
 
 /* --- KEY CODES --- */
@@ -80,6 +82,7 @@
 # define LEFT 65361
 # define UP 65362
 # define DOWN 65364
+# define SHIFT 65505
 
 /* --- COLORS --- */
 # define K_NORMAL "\x1B[0m"
@@ -181,6 +184,13 @@ typedef struct s_player
 	int 	horizontal;
 	int 	vertical;
 	int		rotating;
+	int		sprint;
+	int		forwards;
+	int		backwards;
+	int		left;
+	int		right;
+	int		rotating_left;
+	int		rotating_right;
 	int		map_x;
 	int		map_y;
 }			t_player;

@@ -6,7 +6,7 @@
 /*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:20:52 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/11/09 10:25:12 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:47:03 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,33 @@ int check_movement(t_cub *cub);
 
 void	move_player_angle(t_cub *cub)
 {
-	cub->player.dir += cub->player.rotating * ROTATE_SENS;
+	if (cub->player.rotating_right)
+		cub->player.dir -= ROTATE_SENS;
+	if (cub->player.rotating_left)
+		cub->player.dir += ROTATE_SENS;
 	if (cub->player.dir >= 360)
 		cub->player.dir -= 360;
 	if (cub->player.dir < 0)
 		cub->player.dir += 360;
-	if (cub->player.horizontal)
+	if (cub->player.right)
 	{
-		if (cub->player.horizontal == 1)
-		{
-			cub->player.x += sin(to_radians(cub->player.dir)) * SPEED_X;
-			cub->player.y += cos(to_radians(cub->player.dir)) * SPEED_X;
-		}
-		else if (cub->player.horizontal == -1)
-		{
-			cub->player.x -= sin(to_radians(cub->player.dir)) * SPEED_X;
-			cub->player.y -= cos(to_radians(cub->player.dir)) * SPEED_X;
-		}
+		cub->player.x += sin(to_radians(cub->player.dir)) * SPEED_X;
+		cub->player.y += cos(to_radians(cub->player.dir)) * SPEED_X;
 	}
-	if (cub->player.vertical)
+	else if (cub->player.left)
 	{
-		if (cub->player.vertical == 1)
-		{
-			cub->player.x += cos(to_radians(cub->player.dir)) * SPEED_Y;
-			cub->player.y -= sin(to_radians(cub->player.dir)) * SPEED_Y;
-		}
-		else if (cub->player.vertical == -1)
-		{
-			cub->player.x -= cos(to_radians(cub->player.dir)) * SPEED_Y;
-			cub->player.y += sin(to_radians(cub->player.dir)) * SPEED_Y;
-		}
+		cub->player.x -= sin(to_radians(cub->player.dir)) * SPEED_X;
+		cub->player.y -= cos(to_radians(cub->player.dir)) * SPEED_X;
+	}
+	if (cub->player.forwards)
+	{
+		cub->player.x += cos(to_radians(cub->player.dir)) * (SPEED_Y + cub->player.sprint);
+		cub->player.y -= sin(to_radians(cub->player.dir)) * (SPEED_Y + cub->player.sprint);
+	}
+	else if (cub->player.backwards)
+	{
+		cub->player.x -= cos(to_radians(cub->player.dir)) * SPEED_Y;
+		cub->player.y += sin(to_radians(cub->player.dir)) * SPEED_Y;
 	}
 }
 
@@ -57,9 +54,6 @@ int move_player_3D(t_cub *cub)
 		move_player_angle(cub);
 		ray_casting_main(cub);
 	}
-	cub->player.horizontal = 0;
-	cub->player.vertical = 0;
-	cub->player.rotating = 0;
 	// printf("X: %f\n", cub->player.x);
 	// printf("Y: %f\n", cub->player.y);
 	// printf("DIRECTION: %f\n", cub->player.dir);

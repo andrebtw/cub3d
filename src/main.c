@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
+/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:22 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/25 18:04:42 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/16 14:43:32 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ void	values_init(t_cub *cub)
 	cub->parsing.cfg = NULL;
 	cub->parsing.file = NULL;
 	cub->player.rotating = 0;
+	cub->player.forwards = FALSE;
+	cub->player.backwards = FALSE;
+	cub->player.left = FALSE;
+	cub->player.right = FALSE;
+	cub->player.rotating_left = FALSE;
+	cub->player.rotating_right = FALSE;
+	cub->player.sprint = FALSE;
 }
 
 int	main(int argc, char **argv)
