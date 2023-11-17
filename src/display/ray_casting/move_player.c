@@ -49,11 +49,10 @@ void	move_player_angle(t_cub *cub)
 int move_player_3D(t_cub *cub)
 {
 
-	//if (check_movement(cub) == 0)
-	{
-		move_player_angle(cub);
-		ray_casting_main(cub);
-	}
+	if (check_movement(cub) != 0)
+        return (0);
+    move_player_angle(cub);
+    ray_casting_main(cub);
 	// printf("X: %f\n", cub->player.x);
 	// printf("Y: %f\n", cub->player.y);
 	// printf("DIRECTION: %f\n", cub->player.dir);
@@ -67,37 +66,41 @@ int move_player_3D(t_cub *cub)
 
 int check_movement(t_cub *cub)
 {
-	double x;
-	double y;
+	double	x;
+	double	y;
+    //t_point	horizontal;
+	t_point	vertical;
 
     x = 0;
     y = 0;
-	if (cub->player.horizontal)
-	{
-		if (cub->player.horizontal == 1)
-		{
-			x = cub->player.x + sin(to_radians(cub->player.dir)) * SPEED_X;
-			y = cub->player.y + cos(to_radians(cub->player.dir)) * SPEED_X;
-		}
-		else if (cub->player.horizontal == -1)
-		{
-			x = cub->player.x -= sin(to_radians(cub->player.dir)) * SPEED_X;
-			y = cub->player.y -= cos(to_radians(cub->player.dir)) * SPEED_X;
-		}
-	}
-	if (cub->player.vertical)
-	{
-		if (cub->player.vertical == 1)
-		{
-			x = cub->player.x += cos(to_radians(cub->player.dir)) * SPEED_Y;
-			y = cub->player.y -= sin(to_radians(cub->player.dir)) * SPEED_Y;
-		}
-		else if (cub->player.vertical == -1)
-		{
-			x = cub->player.x -= cos(to_radians(cub->player.dir)) * SPEED_Y;
-			y = cub->player.y += sin(to_radians(cub->player.dir)) * SPEED_Y;
-		}
-	}
+	//horizontal.x = 2;
+	//horizontal.y = 2;
+	vertical.x = 2;
+	vertical.y = 2;
+    if (cub->player.dir < 90 || cub->player.dir > 270)
+		vertical.y *= -1;
+	if (cub->player.dir <= 180 && cub->player.dir >= 0)
+		vertical.x *= -1;
+    if (cub->player.right)
+    {
+        x = cub->player.x - vertical.x + sin(to_radians(cub->player.dir)) * SPEED_X;
+        y = cub->player.y - vertical.y + cos(to_radians(cub->player.dir)) * SPEED_X;
+    }
+    else if (cub->player.left)
+    {
+        x = cub->player.x + vertical.x - sin(to_radians(cub->player.dir)) * SPEED_X;
+        y = cub->player.y + vertical.y - cos(to_radians(cub->player.dir)) * SPEED_X;
+    }
+    if (cub->player.forwards)
+    {
+        x = cub->player.x - vertical.y + cos(to_radians(cub->player.dir)) * (SPEED_Y + cub->player.sprint);
+        y = cub->player.y + vertical.x - sin(to_radians(cub->player.dir)) * (SPEED_Y + cub->player.sprint);
+    }
+    else if (cub->player.backwards)
+    {
+        x = cub->player.x + vertical.y - cos(to_radians(cub->player.dir)) * SPEED_Y;
+        y = cub->player.y - vertical.x + sin(to_radians(cub->player.dir)) * SPEED_Y;
+    }
 	x = floor(x / WALLS_SIZE);
 	y = floor(y / WALLS_SIZE);
 	if (x != 0)

@@ -64,14 +64,10 @@ double	calc_wall_distance(t_cub *cub, t_point inter)
 
 void    textures_to_img(t_cub *cub)
 {
-    cub->no.mlx = mlx_init();
-    cub->so.mlx = mlx_init();
-    cub->ea.mlx = mlx_init();
-    cub->we.mlx = mlx_init();
-    cub->no.img.img = mlx_xpm_file_to_image(cub->no.mlx, cub->parsing.no_path, &cub->no.width, &cub->no.height);
-    cub->so.img.img = mlx_xpm_file_to_image(cub->so.mlx, cub->parsing.so_path, &cub->so.width, &cub->so.height);
-    cub->ea.img.img = mlx_xpm_file_to_image(cub->ea.mlx, cub->parsing.ea_path, &cub->ea.width, &cub->ea.height);
-    cub->we.img.img = mlx_xpm_file_to_image(cub->we.mlx, cub->parsing.we_path, &cub->we.width, &cub->we.height);
+    cub->no.img.img = mlx_xpm_file_to_image(cub->mlx.ptr, cub->parsing.no_path, &cub->no.width, &cub->no.height);
+    cub->so.img.img = mlx_xpm_file_to_image(cub->mlx.ptr, cub->parsing.so_path, &cub->so.width, &cub->so.height);
+    cub->ea.img.img = mlx_xpm_file_to_image(cub->mlx.ptr, cub->parsing.ea_path, &cub->ea.width, &cub->ea.height);
+    cub->we.img.img = mlx_xpm_file_to_image(cub->mlx.ptr, cub->parsing.we_path, &cub->we.width, &cub->we.height);
 	cub->no.img.addr = mlx_get_data_addr(cub->no.img.img, &cub->no.img.bits_per_pixel, &cub->no.img.line_length, &cub->no.img.endian);
 	cub->so.img.addr = mlx_get_data_addr(cub->so.img.img, &cub->so.img.bits_per_pixel, &cub->so.img.line_length, &cub->so.img.endian);
 	cub->ea.img.addr = mlx_get_data_addr(cub->ea.img.img, &cub->ea.img.bits_per_pixel, &cub->ea.img.line_length, &cub->ea.img.endian);
