@@ -51,17 +51,17 @@ int cast_rays(t_cub *cub)
             displayed_col.x = -1;
 			//printf("Angle : %f || Nmb : %d\n", ray_angle, ray_nmb);
             if (ray_angle <= 90 || ray_angle >= 270)
-			    displayed_col.texture = &(cub->we);
+			    displayed_col.texture = &(cub->ea);
             else
-                displayed_col.texture = &(cub->ea);
+                displayed_col.texture = &(cub->we);
             draw_walls(cub, walls.y * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, &displayed_col);
 		}
 		else
         {
             if (ray_angle >= 0 && ray_angle <= 180)
-                displayed_col.texture = &(cub->so);
-            else
                 displayed_col.texture = &(cub->no);
+            else
+                displayed_col.texture = &(cub->so);
             draw_walls(cub, walls.x * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, &displayed_col);
         }
 		ray_angle -= cub->ray.angle_btw_ray;

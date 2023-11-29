@@ -49,10 +49,10 @@
 # define WALLS_SIZE 64.0
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
-# define SPEED_Y 5.0
-# define SPEED_X 3.0
-# define SPRINT_SPEED 2.5
-# define ROTATE_SENS 1.5
+# define SPEED_Y 2.0
+# define SPEED_X 1.0
+# define SPRINT_SPEED 2
+# define ROTATE_SENS 1.0
 # define SPEED_SPRINT 12.5
 # define MAP_OFFSET 20
 # define MAP_LIMIT_X 160
