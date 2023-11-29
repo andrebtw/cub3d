@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/28 16:27:58 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/11/09 10:34:38 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:28:45 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void    get_ratio(t_cub *cub)
 			biggest_x = (int)ft_strlen(cub->parsing.map[y]);
     }
 	if (y > biggest_x)
-		cub->map_ratio = (MAP_WIDTH / 2) / (y + 6);
+		cub->map_ratio = (MAP_WIDTH / 2) / y;
 	else
-		cub->map_ratio = (MAP_WIDTH / 2) / (biggest_x + 6);
+		cub->map_ratio = (MAP_WIDTH / 2) / biggest_x;
 }
 
 int print_map(t_cub *cub)
@@ -78,8 +78,8 @@ void	print_player(t_cub *cub)
 	(void)cub;
 	t_rect	rect;
 
-	rect.x = (((cub->player.x / 64) - 0.5) * cub->map_ratio) + 10;
-	rect.y = (((cub->player.y / 64) - 0.5) * cub->map_ratio) + 10;
+	rect.x = (((cub->player.x / 64) - 0.5) * cub->map_ratio);
+	rect.y = (((cub->player.y / 64) - 0.5) * cub->map_ratio);
 	rect.height = 2;
 	rect.width = 2;
 	rect.is_borderless = TRUE;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_map_main.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 12:57:06 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/10/24 16:24:07 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:53:25 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,9 @@ int	spawn_location_check(t_cub *cub)
 		}
 		i++;
 	}
+	if (!found_location)
+		return (ft_putstr_fd(\
+		MSG_ERR_MULTIPLE_SPAWNS, STDERR_FILENO), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 

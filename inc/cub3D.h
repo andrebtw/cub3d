@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/16 14:46:18 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:53:18 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@
 /* --- WINDOW CONSTANTS --- */
 # define RES_WIDTH 1920
 # define RES_HEIGHT 1080
-# define MAP_WIDTH 320
-# define MAP_HEIGHT 320
+# define MAP_WIDTH 800
+# define MAP_HEIGHT 800
 # define WIN_TITLE "Cub3D"
 
 /* --- TEXTURES SIDES --- */
@@ -55,8 +55,8 @@
 # define ROTATE_SENS 1.0
 # define SPEED_SPRINT 12.5
 # define MAP_OFFSET 20
-# define MAP_LIMIT_X 160
-# define MAP_LIMIT_Y 160
+# define MAP_LIMIT_X (MAP_HEIGHT / 2.0)
+# define MAP_LIMIT_Y (MAP_WIDTH / 2.0)
 
 /* --- PIXEL COLORS --- */
 # define WHITE 0xFFFFFF
@@ -134,6 +134,8 @@ A texture file can't be opened, make sure to enter the right map file path.\n\x1
  make sure to have an empty line between the configuration part and the map.\n\x1B[0m"
 # define MSG_ERR_MULTIPLE_SPAWNS "Multiple spawn locations were found. \x1B[0m\n\x1B[33mPlease\
  make sure to only enter one spawn location.\n\x1B[0m"
+# define MSG_ERR_NO_SPAWN "No spawn location was found. \x1B[0m\n\x1B[33mPlease\
+ make sure to enter a spawn location.\n\x1B[0m"
 # define MSG_ERR_MLX_INIT "Mlx initialisation has failed. \x1B[0m\n\x1B[33mPlease\
  make sure it is correctly installed.\n\x1B[0m"
 # define MSG_ERR_CREATE_WIN "Window creation has failed. \x1B[0m\n\x1B[33mPlease\

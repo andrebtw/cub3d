@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 18:02:55 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/09 10:30:15 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:11:52 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	mlx_create_window(t_cub *cub)
 	cub->img.addr = mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.line_length,
 								 &cub->img.endian);
     textures_to_img(cub);
-    print_mapbg(cub);
 	print_map(cub);
     find_player(cub);
 	print_player(cub);

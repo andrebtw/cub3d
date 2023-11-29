@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:20:52 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/11/16 14:47:03 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/11/29 17:11:34 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int move_player_3D(t_cub *cub)
 	// printf("X: %f\n", cub->player.x);
 	// printf("Y: %f\n", cub->player.y);
 	// printf("DIRECTION: %f\n", cub->player.dir);
-    print_mapbg(cub);
 	print_map(cub);
 	print_player(cub);
     // move_player(cub);
