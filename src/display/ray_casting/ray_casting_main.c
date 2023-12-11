@@ -54,7 +54,7 @@ int cast_rays(t_cub *cub)
 			    displayed_col.texture = &(cub->ea);
             else
                 displayed_col.texture = &(cub->we);
-            draw_walls(cub, walls.y * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, &displayed_col);
+            draw_walls(cub, walls.y * cos(to_radians(ray_angle - cub->player.dir)), ray_nmb, &displayed_col);
 		}
 		else
         {
@@ -62,7 +62,7 @@ int cast_rays(t_cub *cub)
                 displayed_col.texture = &(cub->no);
             else
                 displayed_col.texture = &(cub->so);
-            draw_walls(cub, walls.x * cos(to_radians(cub->player.dir - ray_angle)), ray_nmb, &displayed_col);
+            draw_walls(cub, walls.x * cos(to_radians(ray_angle - cub->player.dir)), ray_nmb, &displayed_col);
         }
 		ray_angle -= cub->ray.angle_btw_ray;
 		ray_nmb++;

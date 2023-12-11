@@ -67,13 +67,10 @@ int check_movement(t_cub *cub)
 {
 	double	x;
 	double	y;
-    //t_point	horizontal;
 	t_point	vertical;
 
     x = 0;
     y = 0;
-	//horizontal.x = 2;
-	//horizontal.y = 2;
 	vertical.x = 2;
 	vertical.y = 2;
     if (cub->player.dir < 90 || cub->player.dir > 270)
@@ -102,8 +99,6 @@ int check_movement(t_cub *cub)
     }
 	x = floor(x / WALLS_SIZE);
 	y = floor(y / WALLS_SIZE);
-	if (x != 0)
-		printf("X : %f || Y : %f  |||  Val : %c\n", x, y, cub->parsing.map[(int) y][(int) x]);
 	if (cub->parsing.map[(int) y][(int) x] == '1')
 		return (1);
 	return (0);
