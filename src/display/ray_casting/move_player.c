@@ -6,7 +6,7 @@
 /*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:20:52 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/11/29 17:11:34 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/12/12 22:53:18 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ void	move_player_angle(t_cub *cub)
 
 int move_player_3D(t_cub *cub)
 {
-
-	if (check_movement(cub) != 0)
-        return (0);
+	print_map(cub);
+	// if (check_movement(cub) != 0)
+    //     return (0);
+	check_movement(cub);
     move_player_angle(cub);
     ray_casting_main(cub);
 	// printf("X: %f\n", cub->player.x);

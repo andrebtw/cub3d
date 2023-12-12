@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 13:35:51 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/11/16 14:46:06 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/12/12 19:49:54 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	keyrelease(int keycode, t_cub *cub)
 
 int	keypress(int keycode, t_cub *cub)
 {
-	//printf("KEYCODE: %d\n", keycode);
+	printf("KEYCODE: %d\n", keycode);
 	if (keycode == ESC)
         custom_exit(cub, 0);
 	if (keycode == SHIFT)

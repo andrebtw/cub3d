@@ -6,7 +6,7 @@
 /*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/29 17:53:18 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/12/12 19:53:22 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@
 # define MSG_ERR_MULTIPLE_ARGS "Multiple arguments were entered. \x1B[0m\n\x1B[33mPlease\
  make sure to enter the map path as an argument only.\n\x1B[0m"
 # define MSG_ERR_FILE_MAP_NOT_FOUND "File was not found. \x1B[0m\n\x1B[33mPlease\
-Make sure to enter the right map file path.\n\x1B[0m"
+ make sure to enter the right map file path.\n\x1B[0m"
 # define MSG_ERR_FILE_ACCESS "File was found but is not accessible. \x1B[0m\n\x1B[33mPlease\
  Make sure the right file permissions are set.\n\x1B[0m"
 # define MSG_ERR_WRONG_ID "Error \x1B[0m\n\x1B[33m\
