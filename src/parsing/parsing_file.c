@@ -104,22 +104,22 @@ int	parsing_file(t_cub *cub)
 	return (EXIT_SUCCESS);
 }
 
-void    map_max_len(t_cub *cub)
+void	map_max_len(t_cub *cub)
 {
-    int x;
-    int tmp;
-    int y;
+	int	x;
+	int	tmp;
+	int	y;
 
-    y = -1;
-    x = 0;
-    while (cub->parsing.map[++y])
-    {
-        tmp = 0;
-        while (cub->parsing.map[y][tmp])
-            tmp++;
-        if (x < tmp)
-            x = tmp;
-    }
-    cub->parsing.map_max_x = x;
-    cub->parsing.map_max_y = y;
+	y = -1;
+	x = 0;
+	while (cub->parsing.map[++y])
+	{
+		tmp = 0;
+		while (cub->parsing.map[y][tmp])
+			tmp++;
+		if (x < tmp)
+			x = tmp;
+	}
+	cub->parsing.map_max_x = x;
+	cub->parsing.map_max_y = y;
 }

@@ -54,7 +54,7 @@ void	get_textures(char *dir, char *cfg, t_cub *cub)
 int	get_colors(char *side, char *cfg, t_cub *cub)
 {
 	char	**splited_colors;
-	int 	nmb;
+	int		nmb;
 	int		i;
 
 	i = -1;
@@ -77,8 +77,7 @@ int	get_colors(char *side, char *cfg, t_cub *cub)
 		else if (!ft_strncmp(side, "C", 1))
 			cub->parsing.ceiling_color_rgb[i] = nmb;
 	}
-	ft_free_tab(splited_colors);
-	return (0);
+	return (ft_free_tab(splited_colors), 0);
 }
 
 int	ft_isnmb(char *str)

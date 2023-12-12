@@ -88,7 +88,7 @@ void	check_arg_nmb_by_line(t_cub *cub)
 	}
 }
 
-int tablen(char **tab)
+int	tablen(char **tab)
 {
 	int	i;
 
