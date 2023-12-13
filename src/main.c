@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:22 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/11/16 14:43:32 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/12/13 21:45:41 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	values_init(t_cub *cub)
 	cub->player.rotating_left = FALSE;
 	cub->player.rotating_right = FALSE;
 	cub->player.sprint = FALSE;
+	cub->is_colision = FALSE;
 }
 
 int	main(int argc, char **argv)

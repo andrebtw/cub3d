@@ -6,7 +6,7 @@
 /*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/12/12 19:53:22 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/12/13 22:01:33 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,7 @@ typedef struct s_texture
 
 typedef struct s_cub
 {
+	int			is_colision;
     t_parsing	parsing;
     t_mlx		mlx;
 	int			map_ratio;
