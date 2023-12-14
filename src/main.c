@@ -39,6 +39,7 @@ int	main(int argc, char **argv)
 	t_cub	cub;
 
 	values_init(&cub);
+	cub.mlx.ptr = NULL;
 	ret_code = parsing(&cub, argc, argv);
 	if (ret_code)
 		return (ret_code);

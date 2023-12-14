@@ -43,6 +43,8 @@ int	check_cfg(t_cub *cub, char *str)
 
 	i = 0;
 	cfg_dir = malloc(3 * sizeof(char));
+	if (!cfg_dir)
+		custom_exit(cub, K_ERR_MALLOC);
 	dir = "NOSOWEEA";
 	ft_strlcpy(cfg_dir, str, 3);
 	while (dir[i + 1])
@@ -60,13 +62,14 @@ void	check_texture_files(t_cub *cub)
 {
 	if (open_file(cub->parsing.no_path) || open_file(cub->parsing.so_path)
 		|| open_file(cub->parsing.we_path) || open_file(cub->parsing.we_path))
-		exit(EXIT_FAILURE);
+		custom_exit(cub, EXIT_FAILURE);
 }
 
 int	open_file(char *file)
 {
 	int	fd;
 
+	(void) file;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 	{
