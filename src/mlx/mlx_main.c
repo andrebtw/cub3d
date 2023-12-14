@@ -61,7 +61,7 @@ int	mlx_main(t_cub *cub)
 	if (ret_value)
 		return (ret_value);
     mlx_hooks(cub);
-    mlx_loop_hook(cub->mlx.ptr, move_player_3D, cub);
+    mlx_loop_hook(cub->mlx.ptr, move_player_3d, cub);
 	mlx_loop(cub->mlx.ptr);
 	return (EXIT_SUCCESS);
 }

@@ -56,7 +56,7 @@ int	keyrelease(int keycode, t_cub *cub)
 
 int	keypress(int keycode, t_cub *cub)
 {
-	printf("KEYCODE: %d\n", keycode);
+	//printf("KEYCODE: %d\n", keycode);
 	if (keycode == ESC)
         custom_exit(cub, 0);
 	if (keycode == SHIFT)

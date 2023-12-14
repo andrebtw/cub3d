@@ -14,142 +14,106 @@
 
 int		cast_rays(t_cub *cub);
 double	horizontal_intersections(t_cub *cub, double ray_angle, int *x_coord);
-double  vertical_intersections(t_cub *cub, double ray_angle, int *y_coord);
-int		check_wall(t_cub *cub, t_point inter);
+double	vertical_intersections(t_cub *cub, double ray_angle, int *y_coord);
 
-int ray_casting_main(t_cub *cub)
+int	ray_casting_main(t_cub *cub)
 {
 	init_ray_cast(cub);
 	cast_rays(cub);
 	return (0);
 }
 
-int cast_rays(t_cub *cub)
+int	cast_rays(t_cub *cub)
 {
-	double	        ray_angle;
-	int		        ray_nmb;
-    t_point         walls;
-    t_displayed_col displayed_col;
+	t_ray_data		ray;
+	t_point			walls;
+	t_displayed_col	displayed_col;
 
-	ray_angle = cub->player.dir + (FOV / 2);
-	ray_nmb = 0;
-    displayed_col.x = 0;
-    displayed_col.y = 0;
-    //printf("Angle : %f\n", cub->player.dir);
-	while (ray_nmb < RES_WIDTH)
+	ray.angle = cub->player.dir + (FOV / 2);
+	ray.nmb = 0;
+	displayed_col.x = 0;
+	displayed_col.y = 0;
+	while (ray.nmb < RES_WIDTH)
 	{
-		if (ray_angle > 360)
-			ray_angle -= 360;
-		if (ray_angle < 0)
-			ray_angle += 360;
-		walls.x = horizontal_intersections(cub, ray_angle, &displayed_col.x);
-		walls.y = vertical_intersections(cub, ray_angle, &displayed_col.y);
-		//wall_v = -1;
-        //printf("Wall H : %f || Wall V : %f\n", wall_h, wall_v);
-		if ((walls.x >= walls.y && walls.y > 0) || walls.x < 0)
-		{
-            displayed_col.x = -1;
-			//printf("Angle : %f || Nmb : %d\n", ray_angle, ray_nmb);
-            if (ray_angle <= 90 || ray_angle >= 270)
-			    displayed_col.texture = &(cub->ea);
-            else
-                displayed_col.texture = &(cub->we);
-            draw_walls(cub, walls.y * cos(to_radians(ray_angle - cub->player.dir)), ray_nmb, &displayed_col);
-		}
-		else
-        {
-            if (ray_angle >= 0 && ray_angle <= 180)
-                displayed_col.texture = &(cub->no);
-            else
-                displayed_col.texture = &(cub->so);
-            draw_walls(cub, walls.x * cos(to_radians(ray_angle - cub->player.dir)), ray_nmb, &displayed_col);
-        }
-		ray_angle -= cub->ray.angle_btw_ray;
-		ray_nmb++;
+		if (ray.angle > 360)
+			ray.angle -= 360;
+		if (ray.angle < 0)
+			ray.angle += 360;
+		walls.x = horizontal_intersections(cub, ray.angle, &displayed_col.x);
+		walls.y = vertical_intersections(cub, ray.angle, &displayed_col.y);
+		find_smallest_dist(cub, walls, &displayed_col, ray);
+		ray.angle -= cub->ray.angle_btw_ray;
+		ray.nmb++;
 	}
 	return (0);
 }
 
-double horizontal_intersections(t_cub *cub, double ray_angle, int *x_coord)
+double	horizontal_intersections(t_cub *cub, double ray_angle, int *x_coord)
 {
-	t_point	inter;
-	t_point	a;
+	t_intersection	inter;
+	t_point			a;
 
+	inter.side = 'x';
 	if (ray_angle >= 0 && ray_angle <= 180)
 	{
-		inter.y = floor(cub->player.y / WALLS_SIZE) * WALLS_SIZE - 0.001;
+		inter.coord.y = floor(cub->player.y / WALLS_SIZE) * WALLS_SIZE - 0.001;
 		a.y = -WALLS_SIZE;
 	}
 	else
 	{
-		inter.y = floor(cub->player.y / WALLS_SIZE) * WALLS_SIZE + WALLS_SIZE;
+		inter.coord.y = floor(cub->player.y / \
+		WALLS_SIZE) * WALLS_SIZE + WALLS_SIZE;
 		a.y = WALLS_SIZE;
 	}
 	a.x = WALLS_SIZE / tan(to_radians(ray_angle));
-    inter.x = cub->player.x + (cub->player.y - inter.y) / tan(to_radians(ray_angle));
+	inter.coord.x = cub->player.x + (cub->player.y - inter.coord.y) \
+	/ tan(to_radians(ray_angle));
 	if ((ray_angle < 270 && ray_angle > 90) && a.x > 0)
-        a.x *= -1;
+		a.x *= -1;
 	if ((ray_angle >= 270 || ray_angle <= 90) && a.x < 0)
 		a.x *= -1;
-    if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
+	if (check_error_in_ray(cub, inter))
 		return (-1);
-    while (check_wall(cub, inter) != 0)
-	{
-		inter.x += a.x;
-		inter.y += a.y;
-        if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
-            return (-1);
-	}
-    *x_coord = (int) floor(inter.x) % (int) WALLS_SIZE;
-	return (calc_wall_distance(cub, inter));
+	return (increment_ray(cub, &inter, a, x_coord));
 }
 
-double vertical_intersections(t_cub *cub, double ray_angle, int *y_coord)
+double	vertical_intersections(t_cub *cub, double ray_angle, int *y_coord)
 {
-	t_point inter;
-	t_point a;
+	t_intersection	inter;
+	t_point			a;
 
+	inter.side = 'y';
 	if (ray_angle >= 270 || ray_angle <= 90)
 	{
-		inter.x = floor(cub->player.x / WALLS_SIZE) * WALLS_SIZE + WALLS_SIZE;
+		inter.coord.x = floor(cub->player.x / \
+		WALLS_SIZE) * WALLS_SIZE + WALLS_SIZE;
 		a.x = WALLS_SIZE;
 	}
 	else
 	{
-		inter.x = floor(cub->player.x / WALLS_SIZE) * WALLS_SIZE - 0.001;
+		inter.coord.x = floor(cub->player.x / WALLS_SIZE) * WALLS_SIZE - 0.001;
 		a.x = -WALLS_SIZE;
 	}
 	a.y = WALLS_SIZE * tan(to_radians(ray_angle));
 	if (ray_angle > 0 && ray_angle < 180 && a.y > 0)
-        a.y *= -1;
+		a.y *= -1;
 	if ((ray_angle <= 0 || ray_angle >= 180) && a.y < 0)
 		a.y *= -1;
-	inter.y = cub->player.y + (cub->player.x - inter.x) * tan(to_radians(ray_angle));
-    if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
+	inter.coord.y = cub->player.y + (cub->player.x - inter.coord.x) \
+	* tan(to_radians(ray_angle));
+	if (check_error_in_ray(cub, inter))
 		return (-1);
-    while (check_wall(cub, inter) != 0)
-	{
-		inter.x += a.x;
-		inter.y += a.y;
-        if (inter.y < 0 || inter.x < 0 || inter.y / WALLS_SIZE >= cub->parsing.map_max_y || inter.x / WALLS_SIZE >= cub->parsing.map_max_x)
-			return (-1);
-	}
-    *y_coord = (int) floor(inter.y) % (int) WALLS_SIZE;
-	return (calc_wall_distance(cub, inter));
+	return (increment_ray(cub, &inter, a, y_coord));
 }
 
-int check_wall(t_cub *cub, t_point inter)
+int	check_wall(t_cub *cub, t_point inter)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = floor(inter.x / WALLS_SIZE);
 	y = floor(inter.y / WALLS_SIZE);
 	if (cub->parsing.map[y][x] == '1')
-    {
-        //printf("Inter x : %d || Inter y : %d\n", x, y);
-        //printf("WALL\n\n");
-        return (0);
-    }
+		return (0);
 	return (1);
 }
