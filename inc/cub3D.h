@@ -50,9 +50,9 @@
 # define FOV 60.0
 # define PLAYER_HEIGHT (WALLS_SIZE / 2.0)
 # define SPEED_Y 0.5
-# define SPEED_X 1.0
+# define SPEED_X 0.2
 # define SPRINT_SPEED 2
-# define ROTATE_SENS 0.5
+# define ROTATE_SENS 2
 # define SPEED_SPRINT 12.5
 # define MAP_OFFSET 20
 # define MAP_LIMIT_X (MAP_HEIGHT / 2.0)
@@ -260,6 +260,18 @@ typedef struct s_displayed_col
     t_texture   *texture;
 }   t_displayed_col;
 
+typedef struct s_ray_data
+{
+	double	angle;
+	int 	nmb;
+}	t_ray_data;
+
+typedef struct s_intersection
+{
+	t_point	coord;
+	char 	side;
+}	t_intersection;
+
 /* --- MAIN FUNCTIONS --- */
 void	custom_exit(t_cub *cub, int exit_code);
 
@@ -301,7 +313,11 @@ int		ray_casting_main(t_cub *cub);
 void	init_ray_cast(t_cub *cub);
 double	calc_wall_distance(t_cub *cub, t_point inter);
 int		draw_walls(t_cub *cub, double wall_dist, int ray_nmb, t_displayed_col *displayed_col);
-int     move_player_3D(t_cub *cub);
+int     move_player_3d(t_cub *cub);
+void	find_smallest_dist(t_cub *cub, t_point walls, t_displayed_col *displayed_col, t_ray_data ray);
+int		check_wall(t_cub *cub, t_point inter);
+double	increment_ray(t_cub *cub, t_intersection *inter, t_point a, int *int_coord);
+int		check_error_in_ray(t_cub *cub, t_intersection inter);
 
 /* --- TOOLS --- */
 double	to_radians(double angle);
