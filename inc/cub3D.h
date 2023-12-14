@@ -6,7 +6,7 @@
 /*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 22:28:54 by anrodri2          #+#    #+#             */
-/*   Updated: 2023/12/13 22:01:33 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/12/14 18:54:31 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -318,6 +318,7 @@ void	find_smallest_dist(t_cub *cub, t_point walls, t_displayed_col *displayed_co
 int		check_wall(t_cub *cub, t_point inter);
 double	increment_ray(t_cub *cub, t_intersection *inter, t_point a, int *int_coord);
 int		check_error_in_ray(t_cub *cub, t_intersection inter);
+void	collision_animation(t_cub *cub);
 
 /* --- TOOLS --- */
 double	to_radians(double angle);

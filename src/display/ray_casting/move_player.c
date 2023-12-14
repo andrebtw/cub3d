@@ -6,7 +6,7 @@
 /*   By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 19:20:52 by mthibaul          #+#    #+#             */
-/*   Updated: 2023/12/13 22:01:40 by anrodri2         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:15:13 by anrodri2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ int	check_movement(t_cub *cub)
 
 	pos.x = 0;
 	pos.y = 0;
-	vertical.x = 2;
-	vertical.y = 2;
+	vertical.x = 5;
+	vertical.y = 5;
 	if (cub->player.dir < 90 || cub->player.dir > 270)
 		vertical.y *= -1;
 	if (cub->player.dir <= 180 && cub->player.dir >= 0)
