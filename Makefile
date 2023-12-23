@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anrodri2 <anrodri2@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: anrodri2 < anrodri2@student.42lyon.fr >    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/26 22:03:15 by anrodri2          #+#    #+#              #
-#    Updated: 2023/10/30 18:39:41 by anrodri2         ###   ########.fr        #
+#    Updated: 2023/12/14 19:40:20 by anrodri2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,14 @@ SRCS =	main.c \
 		mlx/mlx_hooks.c \
 		display/print_map.c \
 		display/player.c \
+		display/ray_casting/init_ray_cast.c \
+		display/ray_casting/ray_casting_main.c \
+		display/ray_casting/ray_casting.c \
+		display/ray_casting/tools.c \
+		display/ray_casting/move_player.c\
+		display/ray_casting/drawing_walls.c \
 		display/print_mapbg.c \
-		display/shapes/print_rect.c
+		display/shapes/print_rect.c \
 
 OBJS = $(addprefix $(OBJS_DIR), $(SRCS:.c=.o))
 

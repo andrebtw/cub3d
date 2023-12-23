@@ -20,13 +20,13 @@ void	get_textures_sides(char *dir, char *cfg, t_cub *cub)
 	{
 		cub->parsing.we_path = ft_strdup(cfg);
 		if (!cub->parsing.we_path)
-			custom_exit(cub, K_ERR_MALLOC);
+			return (free(dir), custom_exit(cub, K_ERR_MALLOC));
 	}
 	else if (!ft_strcmp(dir, "EA"))
 	{
 		cub->parsing.ea_path = ft_strdup(cfg);
 		if (!cub->parsing.ea_path)
-			custom_exit(cub, K_ERR_MALLOC);
+			return (free(dir), custom_exit(cub, K_ERR_MALLOC));
 	}
 }
 
@@ -40,13 +40,13 @@ void	get_textures(char *dir, char *cfg, t_cub *cub)
 	{
 		cub->parsing.no_path = ft_strdup(cfg);
 		if (!cub->parsing.no_path)
-			custom_exit(cub, K_ERR_MALLOC);
+			return (free(dir), custom_exit(cub, K_ERR_MALLOC));
 	}
 	else if (!ft_strcmp(dir, "SO"))
 	{
 		cub->parsing.so_path = ft_strdup(cfg);
 		if (!cub->parsing.so_path)
-			custom_exit(cub, K_ERR_MALLOC);
+			return (free(dir), custom_exit(cub, K_ERR_MALLOC));
 	}
 	get_textures_sides(dir, cfg, cub);
 }
@@ -54,7 +54,7 @@ void	get_textures(char *dir, char *cfg, t_cub *cub)
 int	get_colors(char *side, char *cfg, t_cub *cub)
 {
 	char	**splited_colors;
-	int 	nmb;
+	int		nmb;
 	int		i;
 
 	i = -1;
@@ -62,7 +62,7 @@ int	get_colors(char *side, char *cfg, t_cub *cub)
 		cfg++;
 	splited_colors = ft_split(cfg, ',');
 	if (!splited_colors)
-		custom_exit(cub, K_ERR_MALLOC);
+		return (free(side), custom_exit(cub, K_ERR_MALLOC), 1);
 	while (++i < 3)
 	{
 		nmb = ft_atoi(splited_colors[i]);
@@ -77,8 +77,7 @@ int	get_colors(char *side, char *cfg, t_cub *cub)
 		else if (!ft_strncmp(side, "C", 1))
 			cub->parsing.ceiling_color_rgb[i] = nmb;
 	}
-	ft_free_tab(splited_colors);
-	return (0);
+	return (ft_free_tab(splited_colors), 0);
 }
 
 int	ft_isnmb(char *str)

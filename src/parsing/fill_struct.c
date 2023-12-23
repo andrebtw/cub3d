@@ -50,15 +50,14 @@ void	get_map(t_cub *cub, int i)
 	len = 0;
 	while (cub->parsing.file[len])
 		len++;
-	cub->parsing.map = (char **) malloc((len - i + 1) * sizeof(char **));
+	cub->parsing.map = (char **) malloc((len - i) * sizeof(char **));
 	if (!cub->parsing.map)
 		custom_exit(cub, K_ERR_MALLOC);
-	while (cub->parsing.file[i])
+	while (cub->parsing.file[++i])
 	{
 		cub->parsing.map[j] = ft_strdup(cub->parsing.file[i]);
 		if (!cub->parsing.map[j])
 			custom_exit(cub, K_ERR_MALLOC);
-		i++;
 		j++;
 	}
 	cub->parsing.map[j] = NULL;
@@ -89,7 +88,7 @@ void	check_arg_nmb_by_line(t_cub *cub)
 	}
 }
 
-int tablen(char **tab)
+int	tablen(char **tab)
 {
 	int	i;
 
