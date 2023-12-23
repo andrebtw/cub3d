@@ -68,7 +68,6 @@ int	move_player_3d(t_cub *cub)
 	move_player_angle(cub);
 	ray_casting_main(cub);
 	print_map(cub);
-	print_player(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
 	return (EXIT_SUCCESS);
 }

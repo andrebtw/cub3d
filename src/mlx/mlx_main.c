@@ -48,7 +48,6 @@ int	mlx_create_window(t_cub *cub)
 	textures_to_img(cub);
 	find_player(cub);
 	print_map(cub);
-	print_player(cub);
 	ray_casting_main(cub);
 	mlx_put_image_to_window(cub->mlx.ptr, cub->mlx.win, cub->img.img, 0, 0);
 	return (EXIT_SUCCESS);

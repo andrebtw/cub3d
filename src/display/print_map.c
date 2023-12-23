@@ -73,16 +73,3 @@ void	print_pixel(t_cub *cub, int color, int x, int y)
 	rect.is_borderless = TRUE;
 	print_rect(&(cub->img), &rect);
 }
-
-void	print_player(t_cub *cub)
-{
-	t_rect	rect;
-
-	rect.x = (((cub->player.x / 64) - 0.5) * cub->map_ratio);
-	rect.y = (((cub->player.y / 64) - 0.5) * cub->map_ratio);
-	rect.height = 2;
-	rect.width = 2;
-	rect.is_borderless = TRUE;
-	rect.colour = RED;
-	print_rect(&(cub->img), &rect);
-}
